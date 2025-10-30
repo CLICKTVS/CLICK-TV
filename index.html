@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CLICK TV - Entretenimiento sin límites</title>
+<style>
+/* RESET */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:Inter,Arial,Helvetica,sans-serif;
+  background:#000;
+  color:#fff;
+  line-height:1.45;
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* ANIMACIONES */
+.fade-in{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* LOGO CENTRADO */
+.topbar{display:flex;justify-content:center;align-items:center;padding:20px 0}
+.logo{height:260px;}
+
+/* HERO */
+.hero{min-height:70vh;padding:40px 16px;display:flex;align-items:center;background:linear-gradient(180deg,#000 0%,#0a0a0a 70%)}
+.container{max-width:1100px;margin:0 auto;display:flex;gap:28px;align-items:center;justify-content:center}
+.hero-left{flex:1;text-align:center}
+.hero-right{flex:1;display:flex;justify-content:center;align-items:center;position:relative}
+h1{font-size:32px;color:#fff;margin-bottom:10px}
+.lead{color:#ddd;margin-bottom:16px}
+.ctas{display:flex;gap:12px;margin-bottom:16px;justify-content:center}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;text-decoration:none;transition:all .3s ease;font-weight:700}
+.primary{background:#25D366;color:#fff;font-weight:800}
+.primary:hover{background:#1eb85c}
+.outline{background:transparent;border:1px solid rgba(229,9,20,0.95);color:#e50914;font-weight:700}
+.btn:hover{transform:scale(1.05);opacity:.9}
+.features{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;justify-content:center}
+.features li{list-style:none;background:rgba(255,255,255,0.03);padding:8px 12px;border-radius:8px;font-size:14px}
+
+/* DEMO */
+.demo-banner{
+  background:rgba(229,9,20,0.1);
+  border:1px solid rgba(229,9,20,0.4);
+  color:#fff;
+  padding:12px 20px;
+  border-radius:10px;
+  margin:16px auto;
+  display:inline-block;
+  font-size:16px;
+  font-weight:600;
+  text-shadow:0 0 6px rgba(229,9,20,0.6);
+  transition:all .3s ease;
+}
+.demo-banner:hover{
+  background:rgba(229,9,20,0.2);
+  transform:scale(1.03);
+}
+
+/* CARRUSEL */
+.carousel{position:relative;width:100%;max-width:380px;height:220px;overflow:hidden;border-radius:12px;box-shadow:0 0 18px rgba(229,9,20,0.2);}
+.carousel-track{display:flex;width:calc(380px*20);animation:slide 100s linear infinite}
+.carousel img{width:380px;height:220px;object-fit:cover;flex-shrink:0;}
+@keyframes slide{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-7600px)}
+}
+
+/* PLANES */
+.planes{padding:50px 20px;text-align:center;background:#080808}
+.planes h2{color:#e50914;margin-bottom:24px;font-size:28px}
+.plan-container{display:flex;justify-content:center;flex-wrap:wrap;gap:20px}
+.plan{background:rgba(255,255,255,0.03);padding:20px;border-radius:10px;width:250px;transition:all .3s ease}
+.plan:hover{transform:scale(1.05);background:rgba(229,9,20,0.1)}
+.plan h3{color:#fff;margin-bottom:10px}
+.plan .price{color:#e50914;font-size:22px;font-weight:700;margin-bottom:10px}
+.plan ul{list-style:none;padding:0;text-align:left;color:#ccc}
+.plan ul li{margin-bottom:8px}
+
+/* INFO LICENCIA Y SERVICIO */
+.info-section{
+  padding:40px 20px;
+  background:#0a0a0a;
+  color:#ccc;
+  text-align:center;
+  border-top:1px solid rgba(255,255,255,0.05);
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.info-title{
+  color:#e50914;
+  font-size:24px;
+  margin-bottom:20px;
+  font-weight:700;
+  letter-spacing:1px;
+}
+.info-cards{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:25px;
+}
+.info-card{
+  background:rgba(255,255,255,0.02);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:12px;
+  padding:18px 22px;
+  max-width:280px;
+  text-align:center;
+  transition:transform .3s ease, background .3s ease;
+}
+.info-card:hover{
+  transform:translateY(-6px);
+  background:rgba(229,9,20,0.08);
+}
+.info-icon{
+  font-size:40px;
+  color:#e50914;
+  margin-bottom:10px;
+}
+.info-card strong{
+  color:#fff;
+}
+.info-note{
+  margin-top:25px;
+  font-size:15px;
+  color:#aaa;
+}
+
+/* ACORDEÓN */
+.channels{padding:40px 20px;background:#050505;text-align:center}
+.channels h2{color:#e50914;margin-bottom:20px}
+.acordeon{max-width:900px;margin:0 auto;text-align:left}
+.acordeon-item{background:rgba(255,255,255,0.03);margin-bottom:10px;border-radius:8px;overflow:hidden}
+.acordeon-titulo{cursor:pointer;padding:14px 18px;background:#0b0b0b;color:#e50914;font-weight:700;border:none;width:100%;text-align:left;transition:.3s}
+.acordeon-titulo:hover{background:#111}
+.acordeon-contenido{max-height:0;overflow:hidden;transition:max-height .5s ease;padding:0 18px;color:#ccc}
+.acordeon-contenido ul{padding:12px 0 16px 20px;columns:2}
+.acordeon-contenido li{margin-bottom:6px;font-size:14px}
+.acordeon-item.active .acordeon-contenido{max-height:700px}
+
+/* FOOTER */
+.site-footer{padding:18px 14px;background:#030303;margin-top:28px}
+.footer-inner{display:flex;gap:16px;align-items:center;justify-content:center;flex-direction:column;}
+.logo-sm{height:40px}
+.footer-contact a{color:#fff;text-decoration:none}
+.legal{text-align:center;color:#777;margin-top:12px;font-size:12px}
+
+/* RESPONSIVE */
+@media(max-width:860px){
+  .container{flex-direction:column;padding:12px}
+  h1{font-size:24px}
+  .acordeon-contenido ul{columns:1}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar fade-in">
+  <img src="assets/NEW_LOGO_BLANCO.png" alt="CLICK TV" class="logo">
+</header>
+
+<section class="hero fade-in">
+  <div class="container">
+    <div class="hero-left">
+      <h1>CLICK TV - Disfruta el mejor contenido sin límites</h1>
+      <p class="lead">Películas, series, deportes y canales en vivo de todas las plataformas, en un solo lugar.</p>
+
+      <!-- NUEVA FRASE ELEGANTE -->
+      <div class="demo-banner">✨ Prueba una <strong>demo gratuita de 3 horas</strong> y vive la experiencia CLICK TV. ✨</div>
+
+      <div class="ctas">
+        <a href="https://wa.me/573194693823?text=Hola%%20quiero%20suscribirme%20a%20CLICK%20TV,%20por%20favor%20envíame%20la%20información." class="btn primary" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="20" height="20">
+          Comenzar ahora
+        </a>
+        <a href="#planes" class="btn outline">Ver planes</a>
+      </div>
+
+      <ul class="features">
+        <li>Calidad HD y 4K</li>
+        <li>📺 Canales en vivo</li>
+        <li>🎬 Películas y series</li>
+        <li>🔞 Canales ADULTOS</li>
+        <li>⚡ Soporte 24/7 por WhatsApp</li>
+      </ul>
+    </div>
+
+    <!-- Carrusel -->
+    <div class="hero-right">
+      <div class="carousel">
+        <div class="carousel-track">
+          <img src="assets/img1.jpg"><img src="assets/img2.jpg"><img src="assets/img3.jpg"><img src="assets/img4.jpg"><img src="assets/img5.jpg">
+          <img src="assets/img6.jpg"><img src="assets/img7.jpg"><img src="assets/img8.jpg"><img src="assets/img9.jpg"><img src="assets/img10.jpg">
+          <img src="assets/img11.jpg"><img src="assets/img12.jpg"><img src="assets/img13.jpg"><img src="assets/img14.jpg"><img src="assets/img15.jpg">
+          <img src="assets/img16.jpg"><img src="assets/img17.jpg"><img src="assets/img18.jpg"><img src="assets/img19.jpg"><img src="assets/img20.jpg">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANES -->
+<section id="planes" class="planes fade-in">
+  <h2>🔥 Elige tu plan perfecto</h2>
+  <div class="plan-container">
+    <div class="plan"><h3>1 Dispositivo</h3><p class="price">$15.000</p><ul><li>📺 Canales en vivo</li><li>🎬 Películas y series</li><li>🔞 Canales ADULTOS</li><li>⚡ Soporte 24/7 por WhatsApp</li></ul></div>
+    <div class="plan"><h3>2 Dispositivos</h3><p class="price">$18.000</p><ul><li>📺 Canales en vivo</li><li>🎬 Películas y series</li><li>🔞 Canales ADULTOS</li><li>⚡ Soporte 24/7 por WhatsApp</li></ul></div>
+    <div class="plan"><h3>3 Dispositivos</h3><p class="price">$20.000</p><ul><li>📺 Canales en vivo</li><li>🎬 Películas y series</li><li>🔞 Canales ADULTOS</li><li>⚡ Soporte 24/7 por WhatsApp</li></ul></div>
+    <div class="plan"><h3>4 Dispositivos</h3><p class="price">$22.000</p><ul><li>📺 Canales en vivo</li><li>🎬 Películas y series</li><li>🔞 Canales ADULTOS</li><li>⚡ Soporte 24/7 por WhatsApp</li></ul></div>
+    <div class="plan"><h3>5 Dispositivos</h3><p class="price">$25.000</p><ul><li>📺 Canales en vivo</li><li>🎬 Películas y series</li><li>🔞 Canales ADULTOS</li><li>⚡ Soporte 24/7 por WhatsApp</li></ul></div>
+  </div>
+</section>
+
+<!-- INFORMACIÓN LICENCIA / SERVICIO -->
+<section class="info-section fade-in">
+  <h3 class="info-title">ℹ️ Información importante</h3>
+  <div class="info-cards">
+    <div class="info-card">
+      <div class="info-icon">🔑</div>
+      <p><strong>Licencia:</strong> Es el permiso para usar la app en TVs Samsung, LG o Android (pago anual en la tienda oficial).</p>
+    </div>
+    <div class="info-card">
+      <div class="info-icon">▶️</div>
+      <p><strong>Servicio:</strong> Es el contenido que ves dentro de la app (pago mensual).</p>
+    </div>
+  </div>
+  <p class="info-note">✅ Ten en cuenta que el pago aplica por cada dispositivo.</p>
+</section>
+
+<!-- PARRILLA DE CANALES -->
+<section class="channels fade-in">
+  <h2>📡 Vista Previa de Canales</h2>
+  <div class="acordeon">
+    <div class="acordeon-item">
+      <button class="acordeon-titulo">⍟ CINE CANALES</button>
+      <div class="acordeon-contenido">
+        <ul>
+          <li>CINE | TNT HD</li><li>CINE | HBO HD</li><li>CINE | FOX HD</li><li>CINE | SPACE HD</li>
+          <li>CINE | STUDIO UNIVERSAL</li><li>CINE | PARAMOUNT</li><li>CINE | SONY</li><li>CINE | FX</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="acordeon-item">
+      <button class="acordeon-titulo">⍟ FULL DEPORTES</button>
+      <div class="acordeon-contenido">
+        <ul>
+          <li>DEP | ESPN</li><li>DEP | FOX SPORTS</li><li>DEP | WIN SPORTS +</li><li>DEP | DIRECTV SPORTS</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="acordeon-item">
+      <button class="acordeon-titulo">⍟ CULTURA CANALES</button>
+      <div class="acordeon-contenido">
+        <ul>
+          <li>CUL | DISCOVERY</li><li>CUL | NATIONAL GEOGRAPHIC</li><li>CUL | HISTORY</li><li>CUL | TLC</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="acordeon-item">
+      <button class="acordeon-titulo">⍟ INFANTIL CANALES</button>
+      <div class="acordeon-contenido">
+        <ul>
+          <li>NIÑOS | CARTOON NETWORK</li><li>NIÑOS | DISNEY CHANNEL</li><li>NIÑOS | NICK JR</li><li>NIÑOS | BABY TV</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="acordeon-item">
+      <button class="acordeon-titulo">🔞 ADULTOS</button>
+      <div class="acordeon-contenido">
+        <ul>
+          <li>XXX | BRAZZERS HD</li>
+          <li>XXX | PENTHOUSE GOLD HD</li>
+          <li>XXX | PLAYBOY TV</li>
+          <li>XXX | MAMACITAZ</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer fade-in">
+  <div class="footer-inner">
+    <img src="assets/NEW_LOGO_BLANCO.png" alt="CLICK TV" class="logo-sm">
+    <div class="footer-contact"><a href="https://wa.me/573194693823" target="_blank">💬 Soporte en WhatsApp</a></div>
+  </div>
+  <p class="legal">© 2025 CLICK TV. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+  const fadeElems=document.querySelectorAll('.fade-in');
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}})});
+  fadeElems.forEach(el=>obs.observe(el));
+
+  document.querySelectorAll(".acordeon-titulo").forEach(btn=>{
+    btn.addEventListener("click",()=>btn.parentElement.classList.toggle("active"));
+  });
+});
+</script>
+</body>
+
+
+<!-- 🔥 RESEÑAS DE CLIENTES -->
+<section id="reseñas" style="background-color:#1e1e1e; color:#fff; padding:60px 20px; text-align:center;">
+  <h2 style="font-size:2em; margin-bottom:40px; color:#f04;">Lo que opinan nuestros clientes 🔥</h2>
+
+  <div class="reviews-carousel">
+    <div class="reviews-track">
+      <!-- Las reseñas se generarán aquí -->
+    </div>
+  </div>
+</section>
+
+<!-- BOTÓN FLOTANTE DE WHATSAPP -->
+<a href="https://wa.me/573194693823" target="_blank" class="whatsapp-float" title="Chatea con nosotros">
+  💬
+</a>
+
+<style>
+/* ====== CARRUSEL DE RESEÑAS ====== */
+.reviews-carousel {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+.reviews-track {
+  display: flex;
+  gap: 20px;
+  animation: scrollReviews 70s linear infinite;
+}
+.review-card {
+  background: #2a2a2a;
+  border-radius: 16px;
+  padding: 20px;
+  min-width: 280px;
+  max-width: 300px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  text-align: left;
+  transition: transform 0.3s;
+}
+.review-card:hover {
+  transform: translateY(-6px);
+}
+.review-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.review-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 12px;
+  object-fit: cover;
+}
+.review-name {
+  font-weight: bold;
+  color: #fff;
+}
+.review-stars {
+  color: gold;
+  font-size: 0.9em;
+}
+.review-text {
+  color: #ccc;
+  font-size: 0.95em;
+  line-height: 1.4;
+}
+
+@keyframes scrollReviews {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ====== BOTÓN FLOTANTE DE WHATSAPP ====== */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  color: white;
+  font-size: 30px;
+  border-radius: 50%;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 999;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+}
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+}
+</style>
+
+<script>
+// ====== GENERADOR DE 30 RESEÑAS ======
+const reseñas = [
+  {nombre:"Carlos M.", texto:"Excelente servicio, la calidad del contenido es brutal 🔥", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Carlos"},
+  {nombre:"Laura G.", texto:"Lo uso todos los días, muy fluido y sin cortes.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Laura"},
+  {nombre:"David R.", texto:"Vale totalmente la pena, soporte rápido y amable.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=David"},
+  {nombre:"Natalia P.", texto:"La mejor opción que he probado, 100% recomendado.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Natalia"},
+  {nombre:"Andrés V.", texto:"Variedad de canales y buena estabilidad 👌", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Andres"},
+  {nombre:"Mariana L.", texto:"Me encantan los canales premium, se ven perfectos.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Mariana"},
+  {nombre:"Felipe C.", texto:"Funciona genial en mi Smart TV Samsung.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Felipe"},
+  {nombre:"Camila H.", texto:"Fácil de instalar, soporte me ayudó en minutos 💪", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Camila"},
+  {nombre:"José P.", texto:"Buena relación calidad-precio, lo recomiendo.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Jose"},
+  {nombre:"Vanessa Q.", texto:"Excelente atención al cliente, muy confiables.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Vanessa"},
+  {nombre:"Miguel A.", texto:"No esperaba tanta calidad por tan poco dinero 😍", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Miguel"},
+  {nombre:"Paola D.", texto:"Llevo 3 meses y cero fallas, genial.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Paola"},
+  {nombre:"Santiago T.", texto:"Los canales deportivos van de lujo ⚽🔥", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Santiago"},
+  {nombre:"Tatiana S.", texto:"Buena calidad de imagen, soporte 10/10.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Tatiana"},
+  {nombre:"Cristian E.", texto:"Totalmente recomendable, muy estable.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Cristian"},
+  {nombre:"Valeria R.", texto:"Me encantó, funciona incluso en mi Android Box viejo.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Valeria"},
+  {nombre:"Daniel M.", texto:"Lo uso en mi LG Smart TV sin problema.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Daniel"},
+  {nombre:"Juliana Z.", texto:"Excelente interfaz, se ve moderna y fluida.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Juliana"},
+  {nombre:"Samuel N.", texto:"Puedo ver todo el contenido sin cortes, brutal.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Samuel"},
+  {nombre:"Diana C.", texto:"Muy buena atención, siempre responden rápido.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Diana"},
+  {nombre:"Héctor B.", texto:"Lo mejor para ver canales internacionales 🌎", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Hector"},
+  {nombre:"Andrea P.", texto:"Los canales premium se ven full HD 😍", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Andrea"},
+  {nombre:"Esteban G.", texto:"Increíble estabilidad, muy recomendado.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Esteban"},
+  {nombre:"Katherine L.", texto:"La app es intuitiva y sencilla de usar.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Katherine"},
+  {nombre:"Oscar R.", texto:"He probado varios servicios, y este es el mejor.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Oscar"},
+  {nombre:"Carolina M.", texto:"Buena experiencia, se nota el compromiso del equipo.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Carolina"},
+  {nombre:"Fernando T.", texto:"No se traba, ni siquiera en horas pico 👏", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Fernando"},
+  {nombre:"Isabela J.", texto:"Mi familia está feliz con este servicio 💕", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Isabela"},
+  {nombre:"Jhonatan D.", texto:"Servicio muy completo, buena calidad y soporte.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Jhonatan"},
+  {nombre:"Lizeth P.", texto:"Llevo meses con ellos, cero quejas 💯", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Lizeth"}
+];
+
+// Insertar reseñas duplicadas para bucle infinito visual
+const track = document.querySelector('.reviews-track');
+const reseñasExtendidas = [...reseñas, ...reseñas];
+reseñasExtendidas.forEach(r => {
+  const card = document.createElement('div');
+  card.classList.add('review-card');
+  card.innerHTML = `
+    <div class="review-header">
+      <img src="${r.avatar}" alt="${r.nombre}" class="review-avatar">
+      <div>
+        <div class="review-name">${r.nombre}</div>
+        <div class="review-stars">★★★★★</div>
+      </div>
+    </div>
+    <p class="review-text">${r.texto}</p>
+  `;
+  track.appendChild(card);
+});
+</script>
+
+</html>

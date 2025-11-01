@@ -434,7 +434,7 @@ h1{font-size:28px;color:#fff;margin-bottom:10px}
 .plan.destacado::before {
   content: "👑";
   position: absolute;
-  top: -22px;
+  top: -20px;
   left: 50%;
   transform: translateX(-50%) rotate(-8deg);
   font-size: 28px;
@@ -648,4 +648,963 @@ h1{font-size:28px;color:#fff;margin-bottom:10px}
   opacity: 1;
   padding: 10px 18px 16px;
 }
+
+/* SOLUCIONES PARA EVITAR EL SCROLL LATERAL NO DESEADO EN MÓVIL */
+/* Asegura que todos los elementos contenedores usen el 100% del ancho disponible */
+.hero, .tendencias, .planes, .info-section, .channels, .guia-instalacion, .site-footer {
+  /* box-sizing: border-box; ya está en el reset, pero es bueno recordarlo */
+  width: 100%; 
+  /* La clave es que NINGUNO tenga un ancho max-width o fijo que exceda el viewport */
+}
+
+/* Evita que los carruseles o secciones de scroll salgan de su contenedor */
+/* Estos ya tienen overflow-x: auto; para el desplazamiento interno */
+.plan-container, .guia-grid, .tendencias-container {
+  /* Es crucial que no tengan padding horizontal que se sume al width en móvil */
+  /* En su lugar, usa margin negativo para compensar si quieres que lleguen al borde */
+}
+
+/* Ajuste para los contenedores de los planes y la guía */
+/* Estos se desbordan intencionalmente, pero deben estar dentro de un wrapper para contener las flechas */
+@media (max-width: 768px) {
+    
+    /* El contenedor de planes (plan-container) debe usar flex-wrap: nowrap para el scroll, 
+       pero su padre debe compensar con margen/padding */
+
+    /* La sección de planos en sí */
+    .planes {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    /* El contenedor que permite el scroll de las tarjetas */
+    .plan-container {
+        justify-content: flex-start; /* Asegura que se alineen a la izquierda para el scroll */
+        flex-wrap: nowrap; /* Desactiva el envoltorio para forzar el scroll */
+        overflow-x: auto; /* Habilita el scroll */
+        padding: 0 20px; /* Agrega padding para que las tarjetas no toquen el borde */
+        /* Aseguramos que no se salga del body forzando su ancho */
+        width: 100%;
+    }
+    
+    /* El contenedor de las tarjetas de la guía */
+    .guia-grid {
+        display: flex; /* Cambiamos a flex para forzar el scroll horizontal */
+        overflow-x: auto; /* Habilita el scroll */
+        scroll-snap-type: x mandatory; /* Para un mejor UX de carrusel */
+        gap: 20px;
+        padding: 0 20px 20px 20px; /* Añade padding para ver los bordes de la tarjeta */
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    /* Cada tarjeta de la guía */
+    .guia-card {
+        flex-shrink: 0; /* No permite que las tarjetas se achiquen */
+        width: 80vw; /* Ancho basado en el viewport para carrusel */
+        max-width: 320px;
+        scroll-snap-align: start;
+    }
+}
+
+/* AJUSTES PARA EL CARRUSEL PRINCIPAL (SECTION HERO) */
+
+/* Secciones principales para reforzar que no se desborden */
+.hero, .container {
+    width: 100%;
+    max-width: 100%;
+    /* Refuerza que no se desborden horizontalmente */
+    overflow-x: hidden; 
+}
+
+/* Reducción y ajuste del carrusel en móvil */
+@media (max-width: 860px) {
+    
+    /* Contenedor derecho del Hero - Le damos padding para que no esté pegado al borde */
+    .hero-right {
+        padding: 0 15px; 
+        margin-top: 20px; /* Separación del texto superior */
+        width: 100%;
+    }
+
+    /* Contenedor del Carrusel */
+    .carousel {
+        /* Usamos un ancho relativo (vw) para que se ajuste a la pantalla, 
+           pero dejando margen a los lados (gracias al padding del .hero-right) */
+        width: 90vw; 
+        max-width: 400px; /* Limitar el tamaño máximo */
+        height: 180px; /* **Reducir la altura** para que ocupe menos espacio vertical */
+        margin: 0 auto; /* Centrar el carrusel dentro del padding de .hero-right */
+        
+        /* Modificamos el box-shadow para que no se desborde si es muy grande */
+        box-shadow: 0 0 10px rgba(229,9,20,0.2);
+    }
+    
+    /* Las imágenes internas deben adaptarse al nuevo tamaño del contenedor */
+    .carousel img {
+        /* La imagen debe ocupar el ancho completo del carrusel */
+        width: inherit; 
+        /* La altura se ajusta a la nueva altura del .carousel */
+        height: 180px; 
+        min-width: 90vw; /* Asegura que la imagen tenga un ancho mínimo */
+        max-width: 400px;
+    }
+
+    /* Ajustar la animación para que use el nuevo ancho de la imagen (90vw) */
+    .carousel-track {
+        /* Deshabilitamos la animación basada en píxeles fijos 
+           que podría causar desbordamiento */
+        animation: none;
+        
+        /* Si prefieres dejar la animación (menos eficiente): */
+        /* width: calc(90vw * 20); */
+        /* width: 100%; */
+    }
+
+    /* Desactivar la animación del carrusel en móvil para más estabilidad,
+       o actualizar el keyframe si fuera necesario */
+    @keyframes slide {
+        /* Desactivamos o reducimos el movimiento para mayor estabilidad */
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-900%); } /* Ajuste basado en porcentajes */
+    }
+    
+    /* Por seguridad, si el carrusel animado aún genera problemas, lo mejor es anular su animación: */
+    /* .carousel-track { animation: none !important; width: 100% !important; } */
+}
+
+/* REGLAS DE ESTABILIDAD GENERAL (ya las tenías, pero es bueno repetirlas al final) */
+body {
+    overflow-x: hidden !important;
+}
+
+/* ... dentro de @media (max-width: 860px) ... */
+
+/* Anulamos la animación del track y usamos el ancho total */
+.carousel-track {
+    /* Necesitamos que el track sea 20 veces el ancho de una sola imagen (100% * 20) */
+    width: 2000%; 
+    /* Aplicamos la animación de nuevo, pero con un keyframe diferente para móvil */
+    animation: slide-mobile 100s linear infinite; 
+}
+
+.carousel img {
+    /* Cada imagen toma 1/20 del ancho total (2000%/20 = 100%) */
+    width: 5%; 
+    /* Y le forzamos a ser 90vw para que la animación se vea bien */
+    min-width: 90vw; 
+    height: 180px; 
+}
+
+/* Nuevo Keyframe solo para móvil (basado en el ancho de 19 imágenes) */
+@keyframes slide-mobile {
+    0% { transform: translateX(0); }
+    /* El desplazamiento debe ser (Ancho Total - Ancho de 1 Imagen) / Ancho Total
+       (20 imágenes - 1 imagen) / 20 imágenes = 19/20 = 95% */
+    100% { transform: translateX(-95%); }
+}
+
+/* ******************************************************************* */
+/* FIN DE LOS AJUSTES DE ANIMACIÓN EN MÓVIL (dentro de la media query) */
+/* ******************************************************************* */
+
+/* AJUSTE PARA EL CARRUSEL EN PC (PARA QUE LAS IMÁGENES SE AJUSTEN) */
+@media (min-width: 861px) {
+    /* Contenedor del Carrusel: Aseguramos que su ancho máximo no lo limite demasiado */
+    .carousel {
+        /* Se mantiene el max-width, pero si el contenedor es más chico, se ajusta */
+        width: 100%;
+        /* El max-width de 380px que ya tenías es el límite superior. */
+        max-width: 380px; 
+        height: 220px; /* Mantener la altura */
+        /* Aseguramos que el carrusel se centre bien en el hero-right */
+        margin: 0 auto;
+    }
+
+    /* Imágenes dentro del Carrusel: DEBEN ocupar el 100% del ancho del carrusel */
+    .carousel img {
+        /* Esto es CRUCIAL. Hacemos que la imagen sea el 100% del ancho de su padre (.carousel) */
+        width: 100%; 
+        /* Para que todas las imágenes tengan el mismo tamaño que el carrusel */
+        height: 105%; 
+        /* object-fit: cover ya lo tenías, y es correcto para rellenar el espacio. */
+        object-fit: cover;
+        /* Aseguramos que no haya un tamaño mínimo que fuerce el desbordamiento */
+        min-width: unset; 
+    }
+    
+    /* Pista del Carrusel: Ajustar el width para que use PORCENTAJES y se adapte */
+    .carousel-track {
+        /* Si tienes 20 imágenes, el ancho total es 2000% */
+        width: 105%; 
+        /* La animación debe basarse en el nuevo ancho */
+        animation: slide-desktop 7s linear infinite;
+    }
+
+    /* Nuevo keyframe para la animación en desktop */
+    @keyframes slide-desktop {
+        0% { transform: translateX(0); }
+        /* El desplazamiento total es (Número de imágenes - 1) / Número de imágenes
+           (20 - 1) / 20 = 19/20 = 95% */
+        100% { transform: translateX(-95%); }
+    }
+}
+/* reset */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:Inter,Arial,Helvetica,sans-serif;background:#000;color:#fff;line-height:1.45;overflow-x:hidden;position:relative}
+
+/* general fade-in */
+.fade-in{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* ===== LOGO ADAPTATIVO - FINAL ===== */
+
+/* contenedor general */
+.topbar {
+  position: relative;
+  width: 100%;
+  padding: 10px 0;
+  z-index: 60;
+}
+
+/* ----- LOGO DESKTOP ----- */
+.topbar-desktop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-large {
+  max-height: 300px;
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+/* ----- LOGO MÓVIL ----- */
+.topbar-mobile {
+  display: none;
+  position: fixed;
+  top: 10px;
+  left: 12px;
+  z-index: 999;
+}
+
+.logo-mobile {
+  height: 42px;
+  width: auto;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+}
+
+/* ----- DESACTIVAR CLIC EN LOGOS ----- */
+.brand-desktop,
+.brand-mobile {
+  pointer-events: none;
+  cursor: default;
+}
+
+/* ----- RESPONSIVE ----- */
+@media (max-width: 860px) {
+  .topbar-desktop {
+    display: none !important; /* oculta logo grande */
+  }
+
+  .topbar-mobile {
+    display: block !important; /* muestra logo móvil */
+  }
+}
+
+@media (min-width: 861px) {
+  .topbar-desktop {
+    display: flex !important; /* muestra logo grande */
+  }
+
+  .topbar-mobile {
+    display: none !important; /* oculta logo móvil */
+  }
+}
+
+
+
+
+
+/* hero */
+.hero{min-height:64vh;padding:28px 16px;display:flex;align-items:center;background:linear-gradient(180deg,#000 0%,#080808 70%)}
+.container{max-width:1100px;margin:0 auto;display:flex;gap:28px;align-items:center}
+.hero-left{flex:1;text-align:center}
+.hero-right{flex:1;display:flex;justify-content:center;align-items:center;position:relative}
+
+h1{font-size:28px;color:#fff;margin-bottom:10px}
+.lead{color:#ddd;margin-bottom:16px}
+.ctas{display:flex;gap:12px;margin-bottom:16px;justify-content:center}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;text-decoration:none;transition:all .3s ease;font-weight:700}
+.primary{background:#25D366;color:#fff;font-weight:800}
+.primary:hover{background:#1eb85c}
+.outline{background:transparent;border:1px solid rgba(229,9,20,0.95);color:#e50914;font-weight:700}
+.btn:hover{transform:scale(1.05);opacity:.9}
+.features{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;justify-content:center}
+.features li{list-style:none;background:rgba(255,255,255,0.03);padding:8px 12px;border-radius:8px;font-size:14px}
+
+/* demo-banner */
+.demo-banner{
+  background:rgba(229,9,20,0.1);
+  border:1px solid rgba(229,9,20,0.4);
+  color:#fff;
+  padding:12px 20px;
+  border-radius:10px;
+  margin:16px auto;
+  display:inline-block;
+  font-size:16px;
+  font-weight:600;
+  text-shadow:0 0 6px rgba(229,9,20,0.6);
+  transition:all .3s ease;
+}
+.demo-banner:hover{transform:scale(1.03)}
+
+/* carousel pequeño en hero - INICIO DE MODIFICACIÓN */
+.carousel{position:relative;width:100%;max-width:380px;height:220px;overflow:hidden;border-radius:12px;box-shadow:0 0 18px rgba(229,9,20,0.2);}
+
+/* 🛠️ AJUSTE PC: EL ANCHO DEL TRACK DEBE SER 7600px PARA LAS 20 IMÁGENES */
+.carousel-track{display:flex;width:calc(380px * 20);animation:slide 100s linear infinite} 
+
+.carousel img{width:380px;height:220px;object-fit:cover;flex-shrink:0;}
+
+/* 🛠️ AJUSTE PC: EL KEYFRAME DEBE MOVER 7600px */
+@keyframes slide{0%{transform:translateX(0)}100%{transform:translateX(-7600px)}} 
+/* carousel pequeño en hero - FIN DE MODIFICACIÓN */
+
+/* PLANES */
+.planes{padding:50px 20px;text-align:center;background:#080808}
+.planes h2{color:#e50914;margin-bottom:24px;font-size:28px}
+.plan-container{display:flex;justify-content:center;flex-wrap:wrap;gap:20px}
+.plan{background:rgba(255,255,255,0.03);padding:20px;border-radius:10px;width:250px;transition:all .3s ease}
+.plan:hover{transform:scale(1.05);background:rgba(229,9,20,0.1)}
+.plan h3{color:#fff;margin-bottom:10px}
+.plan .price{color:#e50914;font-size:22px;font-weight:700;margin-bottom:10px}
+.plan ul{list-style:none;padding:0;text-align:left;color:#ccc}
+.plan ul li{margin-bottom:8px}
+
+/* info section */
+.info-section{
+  padding:40px 20px;
+  background:#0a0a0a;
+  color:#ccc;
+  text-align:center;
+  border-top:1px solid rgba(255,255,255,0.05);
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.info-title{color:#e50914;font-size:24px;margin-bottom:20px;font-weight:700;letter-spacing:1px}
+.info-cards{display:flex;justify-content:center;flex-wrap:wrap;gap:25px}
+.info-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:18px 22px;max-width:280px;text-align:center;transition:transform .3s ease, background .3s ease}
+.info-card:hover{transform:translateY(-6px);background:rgba(229,9,20,0.08)}
+.info-icon{font-size:40px;color:#e50914;margin-bottom:10px}
+.info-card strong{color:#fff}
+.info-note{margin-top:25px;font-size:15px;color:#aaa}
+
+/* acordeon */
+.channels{padding:40px 20px;background:#050505;text-align:center}
+.channels h2{color:#e50914;margin-bottom:20px}
+.acordeon{max-width:900px;margin:0 auto;text-align:left}
+.acordeon-item{background:rgba(255,255,255,0.03);margin-bottom:10px;border-radius:8px;overflow:hidden}
+.acordeon-titulo{cursor:pointer;padding:14px 18px;background:#0b0b0b;color:#e50914;font-weight:700;border:none;width:100%;text-align:left;transition:.3s}
+.acordeon-titulo:hover{background:#111}
+.acordeon-contenido{max-height:0;overflow:hidden;transition:max-height .5s ease;padding:0 18px;color:#ccc}
+.acordeon-contenido ul{padding:12px 0 16px 20px;columns:2}
+.acordeon-contenido li{margin-bottom:6px;font-size:14px}
+.acordeon-item.active .acordeon-contenido{max-height:700px}
+
+/* footer */
+.site-footer{padding:18px 14px;background:#030303;margin-top:28px}
+.footer-inner{display:flex;gap:16px;align-items:center;justify-content:center;flex-direction:column;}
+.logo-sm{height:40px}
+.footer-contact a{color:#fff;text-decoration:none}
+.legal{text-align:center;color:#777;margin-top:12px;font-size:12px}
+
+/* footer */
+.policy-footer {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #888;
+  text-align: center;
+  line-height: 1.6;
+}
+.policy-footer strong {
+  color: #fff;
+}
+
+
+/* responsive base - INICIO DE MODIFICACIÓN */
+@media(max-width:860px){
+  .container{flex-direction:column;padding:12px}
+  h1{font-size:24px}
+  .acordeon-contenido ul{columns:1}
+
+    /* 🛠️ AJUSTE MÓVIL: Reglas para el carrusel en resolución pequeña */
+    .hero-right {
+        padding: 0 15px; 
+        margin-top: 20px; 
+        width: 100%;
+    }
+
+    .carousel {
+        width: 90vw; 
+        max-width: 400px; 
+        height: 180px; /* Altura ajustada */
+        margin: 0 auto;
+        box-shadow: 0 0 10px rgba(229,9,20,0.2);
+    }
+
+    /* 🛠️ AJUSTE MÓVIL: El ancho es 20 veces el contenedor (2000%) */
+    .carousel-track {
+        width: 2000%; 
+        animation: slide-mobile 100s linear infinite; /* Usamos nuevo keyframe */
+        transform: translateX(0);
+    }
+
+    /* 🛠️ AJUSTE MÓVIL: Cada imagen es 1/20 del track */
+    .carousel img {
+        width: 5%; 
+        min-width: 90vw; /* El ancho visible que queremos */
+        height: 180px;
+        flex-shrink: 0;
+    }
+}
+/* responsive base - FIN DE MODIFICACIÓN */
+
+
+/* 🛠️ AJUSTE MÓVIL: Nuevo Keyframe para la animación basada en porcentaje */
+@keyframes slide-mobile {
+    0% { transform: translateX(0); }
+    /* El desplazamiento es 95% para moverse 19 de 20 imágenes */
+    100% { transform: translateX(-95%); } 
+}
+
+
+/* ====== RESEÑAS (si las usas) ====== */
+.reviews-carousel {overflow: hidden;width: 100%;position: relative}
+.reviews-track {display: flex;gap: 20px;animation: scrollReviews 10s linear infinite}
+.review-card {background: #2a2a2a;border-radius: 16px;padding: 20px;min-width: 280px;max-width: 300px;flex-shrink: 0;box-shadow: 0 4px 15px rgba(0,0,0,0.4);text-align:left;transition: transform 0.3s}
+.review-card:hover{transform: translateY(-6px)}
+.review-header{display:flex;align-items:center;margin-bottom:12px}
+.review-avatar{width:50px;height:50px;border-radius:50%;margin-right:12px;object-fit:cover}
+.review-name{font-weight:bold;color:#fff}
+.review-stars{color:gold;font-size:0.9em}
+.review-text{color:#ccc;font-size:0.95em;line-height:1.4}
+@keyframes scrollReviews {from { transform: translateX(0); } to { transform: translateX(-50%); }}
+
+/* whatsapp flotante */
+.whatsapp-float{position:fixed;bottom:20px;right:20px;background-color:#25D366;color:white;font-size:30px;border-radius:50%;padding:15px;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,0.3);z-index:999;transition:transform 0.3s ease,box-shadow 0.3s ease;text-decoration:none}
+.whatsapp-float:hover{transform:scale(1.1);box-shadow:0 6px 14px rgba(0,0,0,0.4)}
+
+/* ====== TENDENCIAS (scroll horizontal tipo Netflix) ====== */
+.tendencias { background:#050505; padding:60px 20px; text-align:center; position:relative; }
+.tendencias-titulo { font-size:1.8em; color:#e50914; font-weight:800; margin-bottom:30px; }
+
+.tendencias-wrapper { position:relative; display:flex; align-items:center; justify-content:center; max-width:1200px; margin:0 auto; }
+
+.tendencias-container {
+  display:flex;
+  overflow-x:auto;
+  scroll-behavior:smooth;
+  gap:20px;
+  padding:10px 40px;
+  -webkit-overflow-scrolling:touch;
+}
+.tendencias-container::-webkit-scrollbar { display:none; }
+
+.tendencia {
+  position:relative;
+  flex:0 0 auto;
+  width:180px;
+  cursor:pointer;
+  transition:transform .3s ease;
+}
+.tendencia:hover { transform:scale(1.08); }
+.tendencia img { width:100%; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.6); display:block; }
+.tendencia .numero {
+  position:absolute;
+  bottom:-22px;
+  left:10px;
+  font-size:60px;
+  font-weight:900;
+  color:#fff;
+  text-shadow:3px 3px 0 #000, 0 0 10px rgba(229,9,20,0.8);
+  z-index:10;
+}
+
+/* Botones scroll */
+.scroll-btn {
+  background: rgba(229,9,20,0.85);
+  border:none;
+  color:#fff;
+  font-size:28px;
+  border-radius:50%;
+  width:48px;
+  height:48px;
+  position:absolute;
+  cursor:pointer;
+  transition: transform .25s, background .25s;
+  z-index:5;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.scroll-btn:hover { transform:scale(1.08); background: rgba(229,9,20,1); }
+.scroll-btn.left { left:6px; }
+.scroll-btn.right { right:6px; }
+
+.tendencias-container.active-drag { cursor:grabbing; cursor:-webkit-grabbing; }
+
+/* responsive */
+@media(max-width:768px){
+  .tendencia { width:140px; }
+  .tendencia .numero { font-size:48px; }
+  .scroll-btn { display:none; }
+}
+
+.tendencia img {
+  filter: brightness(0.9) contrast(1.1) saturate(1.2);
+  transition: all .3s ease;
+}
+.tendencia:hover img {
+  filter: brightness(1) contrast(1.2);
+}
+
+
+/* ===== Flechas de desplazamiento tipo Netflix ===== */
+.scroll-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(229, 9, 20, 0.8);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+  transition: opacity 0.3s ease, background 0.3s ease;
+  box-shadow: 0 0 12px rgba(0,0,0,0.6);
+}
+
+.scroll-arrow:hover {
+  background: rgba(229, 9, 20, 1);
+}
+
+.scroll-left {
+  left: 10px;
+}
+
+.scroll-right {
+  right: 10px;
+}
+
+.scroll-arrow.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* animación sutil de “parpadeo” para atraer atención */
+.scroll-arrow span {
+  animation: hintMove 1.2s infinite ease-in-out;
+}
+
+@keyframes hintMove {
+  0%, 100% { transform: translateX(0); opacity: 0.6; }
+  50% { transform: translateX(4px); opacity: 1; }
+}
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+  .scroll-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+}
+
+
+/* ===== SECCIÓN GUÍAS DE INSTALACIÓN ===== */
+.guia-instalacion {
+  background: #050505;
+  padding: 60px 20px;
+  color: #ddd;
+}
+
+.guia-titulo {
+  text-align: center;
+  font-size: 1.8em;
+  font-weight: 800;
+  color: #e50914;
+  margin-bottom: 40px;
+}
+
+.guia-card {
+  max-width: 900px;
+  margin: 0 auto 40px auto;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.guia-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(229,9,20,0.15);
+}
+
+.guia-card h3 {
+  color: #fff;
+  margin-bottom: 20px;
+  font-size: 1.3em;
+  border-left: 4px solid #e50914;
+  padding-left: 10px;
+}
+
+.pasos {
+  margin-left: 18px;
+  line-height: 1.7;
+}
+
+.pasos li {
+  margin-bottom: 12px;
+}
+
+.sublista {
+  list-style: none;
+  margin-top: 8px;
+  margin-left: 10px;
+}
+
+.sublista li {
+  margin-bottom: 6px;
+  color: #bbb;
+}
+
+.link-ios {
+  color: #e50914;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.link-ios:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .guia-card {
+    padding: 18px;
+  }
+  .guia-card h3 {
+    font-size: 1.1em;
+  }
+}
+
+/* === EFECTO CORONA / DESTACADO PREMIUM === */
+.plan.destacado {
+  position: relative;
+  overflow: visible;
+  background: linear-gradient(145deg, rgba(229,9,20,0.15), rgba(0,0,0,0.9));
+  border: 1px solid rgba(229,9,20,0.6);
+  box-shadow: 0 0 20px rgba(229,9,20,0.3), 0 0 40px rgba(229,9,20,0.2) inset;
+  animation: glowPulse 2.2s ease-in-out infinite alternate;
+}
+
+/* resplandor animado */
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 16px rgba(229,9,20,0.3), 0 0 40px rgba(229,9,20,0.2) inset;
+  }
+  100% {
+    box-shadow: 0 0 28px rgba(229,9,20,0.7), 0 0 60px rgba(229,9,20,0.4) inset;
+  }
+}
+
+/* corona superior */
+.plan.destacado::before {
+  content: "👑";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-8deg);
+  font-size: 28px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
+  animation: floatCrown 2.8s ease-in-out infinite;
+}
+
+@keyframes floatCrown {
+  0%, 100% { transform: translate(-50%, 0) rotate(-8deg); }
+  50% { transform: translate(-50%, -6px) rotate(8deg); }
+}
+
+
+/* ===== NUEVA GUÍA DE INSTALACIÓN VISUAL ===== */
+.guia-instalacion {
+  background: #050505;
+  padding: 70px 20px;
+  color: #ddd;
+  text-align: center;
+}
+
+.guia-titulo {
+  font-size: 1.9em;
+  color: #e50914;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.guia-sub {
+  color: #aaa;
+  font-size: 1em;
+  margin-bottom: 40px;
+}
+
+.guia-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.guia-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  padding: 28px 22px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.guia-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(229,9,20,0.25);
+}
+
+.guia-icon {
+  font-size: 42px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.guia-card h3 {
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-bottom: 16px;
+  border-left: 4px solid #e50914;
+  padding-left: 10px;
+}
+
+.pasos {
+  margin-left: 18px;
+  line-height: 1.7;
+  color: #ccc;
+}
+
+.pasos li {
+  margin-bottom: 10px;
+}
+
+.sublista {
+  list-style: none;
+  margin-top: 6px;
+  margin-left: 14px;
+}
+
+.sublista li {
+  color: #bbb;
+  font-size: 0.95em;
+  margin-bottom: 4px;
+}
+
+.link-ios {
+  color: #e50914;
+  text-decoration: none;
+  font-weight: 600;
+}
+.link-ios:hover {
+  text-decoration: underline;
+}
+
+.guia-nota {
+  font-size: 0.9em;
+  color: #888;
+  margin-top: 35px;
+}
+
+@media (max-width: 768px) {
+  .guia-card {
+    padding: 20px 16px;
+  }
+  .guia-card h3 {
+    font-size: 1.05em;
+  }
+  .guia-grid {
+    gap: 18px;
+  }
+}
+
+
+/* ===== Acordeón con signo + a la derecha ===== */
+.acordeon-titulo {
+  cursor: pointer;
+  padding: 14px 20px;
+  background: #0b0b0b;
+  color: #e50914;
+  font-weight: 700;
+  border: none;
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* título izquierda / + derecha */
+  align-items: center;
+  transition: background 0.3s ease, color 0.3s ease;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.acordeon-titulo:hover {
+  background: #111;
+  color: #fff;
+}
+
+.acordeon-texto {
+  flex: 1;
+  text-align: left;
+}
+
+.acordeon-icon {
+  font-size: 22px;
+  color: #e50914;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Cuando el acordeón está abierto */
+.acordeon-item.active .acordeon-icon {
+  transform: rotate(45deg); /* convierte + en × */
+  color: #fff;
+}
+
+.acordeon-titulo {
+  cursor: pointer;
+  padding: 14px 20px;
+  background: #0b0b0b;
+  color: #e50914;
+  font-weight: 700;
+  border: none;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s ease, color 0.3s ease;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.acordeon-titulo:hover {
+  background: #111;
+  color: #fff;
+}
+
+.acordeon-texto {
+  flex: 1;
+  text-align: left;
+}
+
+.acordeon-icon {
+  font-size: 22px;
+  color: #e50914;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.acordeon-item.active .acordeon-icon {
+  transform: rotate(45deg);
+  color: #fff;
+}
+
+.acordeon-contenido {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
+  color: #ccc;
+  padding: 0 18px;
+}
+
+.acordeon-item.active .acordeon-contenido {
+  max-height: 400px;
+  opacity: 1;
+  padding: 10px 18px 16px;
+}
+
+/* SOLUCIONES PARA EVITAR EL SCROLL LATERAL NO DESEADO EN MÓVIL */
+/* Asegura que todos los elementos contenedores usen el 100% del ancho disponible */
+.hero, .tendencias, .planes, .info-section, .channels, .guia-instalacion, .site-footer {
+  width: 100%; 
+}
+
+/* Ajuste para los contenedores de los planes y la guía */
+@media (max-width: 768px) {
+    
+    /* La sección de planos en sí */
+    .planes {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    /* El contenedor que permite el scroll de las tarjetas */
+    .plan-container {
+        justify-content: flex-start; 
+        flex-wrap: nowrap; 
+        overflow-x: auto; 
+        padding: 0 20px; 
+        width: 100%;
+    }
+    
+    /* El contenedor de las tarjetas de la guía */
+    .guia-grid {
+        display: flex; 
+        overflow-x: auto; 
+        scroll-snap-type: x mandatory; 
+        gap: 20px;
+        padding: 0 20px 20px 20px; 
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    /* Cada tarjeta de la guía */
+    .guia-card {
+        flex-shrink: 0; 
+        width: 80vw; 
+        max-width: 320px;
+        scroll-snap-align: start;
+    }
+}
+
+/* AJUSTES PARA EL CARRUSEL PRINCIPAL (SECTION HERO) */
+
+/* Secciones principales para reforzar que no se desborden */
+.hero, .container {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden; 
+}
+
+/* REGLAS DE ESTABILIDAD GENERAL (adicionado para evitar scroll lateral en cualquier punto) */
+body {
+    overflow-x: hidden !important;
+}
+
+
 

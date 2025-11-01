@@ -1,160 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CLICK TV - Entretenimiento sin límites</title>
-<style>
-/* RESET */
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%}
-body{
-  font-family:Inter,Arial,Helvetica,sans-serif;
-  background:#000;
-  color:#fff;
-  line-height:1.45;
-  overflow-x:hidden;
-  position:relative;
-}
-
-/* ANIMACIONES */
-.fade-in{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
-.fade-in.visible{opacity:1;transform:translateY(0)}
-
-/* LOGO CENTRADO */
-.topbar{display:flex;justify-content:center;align-items:center;padding:20px 0}
-.logo{height:260px;}
-
-/* HERO */
-.hero{min-height:70vh;padding:40px 16px;display:flex;align-items:center;background:linear-gradient(180deg,#000 0%,#0a0a0a 70%)}
-.container{max-width:1100px;margin:0 auto;display:flex;gap:28px;align-items:center;justify-content:center}
-.hero-left{flex:1;text-align:center}
-.hero-right{flex:1;display:flex;justify-content:center;align-items:center;position:relative}
-h1{font-size:32px;color:#fff;margin-bottom:10px}
-.lead{color:#ddd;margin-bottom:16px}
-.ctas{display:flex;gap:12px;margin-bottom:16px;justify-content:center}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;text-decoration:none;transition:all .3s ease;font-weight:700}
-.primary{background:#25D366;color:#fff;font-weight:800}
-.primary:hover{background:#1eb85c}
-.outline{background:transparent;border:1px solid rgba(229,9,20,0.95);color:#e50914;font-weight:700}
-.btn:hover{transform:scale(1.05);opacity:.9}
-.features{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;justify-content:center}
-.features li{list-style:none;background:rgba(255,255,255,0.03);padding:8px 12px;border-radius:8px;font-size:14px}
-
-/* DEMO */
-.demo-banner{
-  background:rgba(229,9,20,0.1);
-  border:1px solid rgba(229,9,20,0.4);
-  color:#fff;
-  padding:12px 20px;
-  border-radius:10px;
-  margin:16px auto;
-  display:inline-block;
-  font-size:16px;
-  font-weight:600;
-  text-shadow:0 0 6px rgba(229,9,20,0.6);
-  transition:all .3s ease;
-}
-.demo-banner:hover{
-  background:rgba(229,9,20,0.2);
-  transform:scale(1.03);
-}
-
-/* CARRUSEL */
-.carousel{position:relative;width:100%;max-width:380px;height:220px;overflow:hidden;border-radius:12px;box-shadow:0 0 18px rgba(229,9,20,0.2);}
-.carousel-track{display:flex;width:calc(380px*20);animation:slide 100s linear infinite}
-.carousel img{width:380px;height:220px;object-fit:cover;flex-shrink:0;}
-@keyframes slide{
-  0%{transform:translateX(0)}
-  100%{transform:translateX(-7600px)}
-}
-
-/* PLANES */
-.planes{padding:50px 20px;text-align:center;background:#080808}
-.planes h2{color:#e50914;margin-bottom:24px;font-size:28px}
-.plan-container{display:flex;justify-content:center;flex-wrap:wrap;gap:20px}
-.plan{background:rgba(255,255,255,0.03);padding:20px;border-radius:10px;width:250px;transition:all .3s ease}
-.plan:hover{transform:scale(1.05);background:rgba(229,9,20,0.1)}
-.plan h3{color:#fff;margin-bottom:10px}
-.plan .price{color:#e50914;font-size:22px;font-weight:700;margin-bottom:10px}
-.plan ul{list-style:none;padding:0;text-align:left;color:#ccc}
-.plan ul li{margin-bottom:8px}
-
-/* INFO LICENCIA Y SERVICIO */
-.info-section{
-  padding:40px 20px;
-  background:#0a0a0a;
-  color:#ccc;
-  text-align:center;
-  border-top:1px solid rgba(255,255,255,0.05);
-  border-bottom:1px solid rgba(255,255,255,0.05);
-}
-.info-title{
-  color:#e50914;
-  font-size:24px;
-  margin-bottom:20px;
-  font-weight:700;
-  letter-spacing:1px;
-}
-.info-cards{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:25px;
-}
-.info-card{
-  background:rgba(255,255,255,0.02);
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:12px;
-  padding:18px 22px;
-  max-width:280px;
-  text-align:center;
-  transition:transform .3s ease, background .3s ease;
-}
-.info-card:hover{
-  transform:translateY(-6px);
-  background:rgba(229,9,20,0.08);
-}
-.info-icon{
-  font-size:40px;
-  color:#e50914;
-  margin-bottom:10px;
-}
-.info-card strong{
-  color:#fff;
-}
-.info-note{
-  margin-top:25px;
-  font-size:15px;
-  color:#aaa;
-}
-
-/* ACORDEÓN */
-.channels{padding:40px 20px;background:#050505;text-align:center}
-.channels h2{color:#e50914;margin-bottom:20px}
-.acordeon{max-width:900px;margin:0 auto;text-align:left}
-.acordeon-item{background:rgba(255,255,255,0.03);margin-bottom:10px;border-radius:8px;overflow:hidden}
-.acordeon-titulo{cursor:pointer;padding:14px 18px;background:#0b0b0b;color:#e50914;font-weight:700;border:none;width:100%;text-align:left;transition:.3s}
-.acordeon-titulo:hover{background:#111}
-.acordeon-contenido{max-height:0;overflow:hidden;transition:max-height .5s ease;padding:0 18px;color:#ccc}
-.acordeon-contenido ul{padding:12px 0 16px 20px;columns:2}
-.acordeon-contenido li{margin-bottom:6px;font-size:14px}
-.acordeon-item.active .acordeon-contenido{max-height:700px}
-
-/* FOOTER */
-.site-footer{padding:18px 14px;background:#030303;margin-top:28px}
-.footer-inner{display:flex;gap:16px;align-items:center;justify-content:center;flex-direction:column;}
-.logo-sm{height:40px}
-.footer-contact a{color:#fff;text-decoration:none}
-.legal{text-align:center;color:#777;margin-top:12px;font-size:12px}
-
-/* RESPONSIVE */
-@media(max-width:860px){
-  .container{flex-direction:column;padding:12px}
-  h1{font-size:24px}
-  .acordeon-contenido ul{columns:1}
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CLICK TV - Entretenimiento sin límites</title>
+  <!-- Asegúrate que style.css esté en la misma carpeta que este index.html -->
+ <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -168,7 +19,6 @@ h1{font-size:32px;color:#fff;margin-bottom:10px}
       <h1>CLICK TV - Disfruta el mejor contenido sin límites</h1>
       <p class="lead">Películas, series, deportes y canales en vivo de todas las plataformas, en un solo lugar.</p>
 
-      <!-- NUEVA FRASE ELEGANTE -->
       <div class="demo-banner">✨ Prueba una <strong>demo gratuita de 3 horas</strong> y vive la experiencia CLICK TV. ✨</div>
 
       <div class="ctas">
@@ -188,7 +38,6 @@ h1{font-size:32px;color:#fff;margin-bottom:10px}
       </ul>
     </div>
 
-    <!-- Carrusel -->
     <div class="hero-right">
       <div class="carousel">
         <div class="carousel-track">
@@ -199,6 +48,28 @@ h1{font-size:32px;color:#fff;margin-bottom:10px}
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- 🔥 SECCIÓN TENDENCIAS (scroll horizontal tipo Netflix) -->
+<section class="tendencias fade-in">
+  <h2 class="tendencias-titulo">Tendencias</h2>
+  <div class="tendencias-wrapper">
+    <button class="scroll-btn left" aria-label="scroll left">❮</button>
+
+    <div class="tendencias-container" tabindex="0" role="region" aria-label="Tendencias">
+      <!-- Ajusta las imágenes en assets/ segun quieras -->
+      <div class="tendencia"><span class="numero">1</span><img src="assets/tendencia1.jpg" alt="Tendencia 1"></div>
+      <div class="tendencia"><span class="numero">2</span><img src="assets/tendencia2.jpg" alt="Tendencia 2"></div>
+      <div class="tendencia"><span class="numero">3</span><img src="assets/tendencia3.jpg" alt="Tendencia 3"></div>
+      <div class="tendencia"><span class="numero">4</span><img src="assets/tendencia4.jpg" alt="Tendencia 4"></div>
+      <div class="tendencia"><span class="numero">5</span><img src="assets/tendencia5.jpg" alt="Tendencia 5"></div>
+      <div class="tendencia"><span class="numero">6</span><img src="assets/tendencia6.jpg" alt="Tendencia 6"></div>
+      <div class="tendencia"><span class="numero">7</span><img src="assets/tendencia7.jpg" alt="Tendencia 7"></div>
+      <div class="tendencia"><span class="numero">8</span><img src="assets/tendencia8.jpg" alt="Tendencia 8"></div>
+    </div>
+
+    <button class="scroll-btn right" aria-label="scroll right">❯</button>
   </div>
 </section>
 
@@ -213,6 +84,11 @@ h1{font-size:32px;color:#fff;margin-bottom:10px}
     <div class="plan"><h3>5 Dispositivos</h3><p class="price">$25.000</p><ul><li>📺 Canales en vivo</li><li>🎬 Películas y series</li><li>🔞 Canales ADULTOS</li><li>⚡ Soporte 24/7 por WhatsApp</li></ul></div>
   </div>
 </section>
+
+<!-- INFO / ACORDEON / RESEÑAS / FOOTER / BOTÓN WHATSAPP - Mantén tu HTML original aquí -->
+<!-- Para no duplicar, copia el resto del HTML que tenías (info-section, channels, footer, reseñas, whatsapp-float) debajo de esta línea en tu HTML original. -->
+
+<!-- RECUERDA: NO incluir estilos inline <style> en este archivo; todo en style.css -->
 
 <!-- INFORMACIÓN LICENCIA / SERVICIO -->
 <section class="info-section fade-in">
@@ -285,6 +161,7 @@ h1{font-size:32px;color:#fff;margin-bottom:10px}
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer class="site-footer fade-in">
   <div class="footer-inner">
     <img src="assets/NEW_LOGO_BLANCO.png" alt="CLICK TV" class="logo-sm">
@@ -293,118 +170,65 @@ h1{font-size:32px;color:#fff;margin-bottom:10px}
   <p class="legal">© 2025 CLICK TV. Todos los derechos reservados.</p>
 </footer>
 
-<script>
-document.addEventListener("DOMContentLoaded",()=>{
-  const fadeElems=document.querySelectorAll('.fade-in');
-  const obs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}})});
-  fadeElems.forEach(el=>obs.observe(el));
+<!-- 🔥 PREGUNTAS FRECUENTES -->
+<section class="channels fade-in">
+  <h2>Preguntas Frecuentes</h2>
+  <div class="acordeon">
+    <div class="acordeon-item">
+      <button class="acordeon-titulo">¿Qué es CLICK TV?</button>
+      <div class="acordeon-contenido">
+        <p>CLICK TV es un servicio de entretenimiento que te permite disfrutar de películas, series, deportes y canales en vivo de todas las plataformas, en un solo lugar.</p>
+      </div>
+    </div>
 
-  document.querySelectorAll(".acordeon-titulo").forEach(btn=>{
-    btn.addEventListener("click",()=>btn.parentElement.classList.toggle("active"));
-  });
-});
-</script>
-</body>
+    <div class="acordeon-item">
+      <button class="acordeon-titulo">¿Cuánto cuesta CLICK TV?</button>
+      <div class="acordeon-contenido">
+        <p>CLICK TV ofrece diferentes planes desde $15.000 hasta $25.000, dependiendo del número de dispositivos que desees conectar.</p>
+      </div>
+    </div>
 
+    <div class="acordeon-item">
+      <button class="acordeon-titulo">¿Dónde puedo ver CLICK TV?</button>
+      <div class="acordeon-contenido">
+        <p>Puedes ver CLICK TV en Smart TVs (Samsung, LG, Android), celulares, tablets o computadoras. Solo necesitas conexión a internet.</p>
+      </div>
+    </div>
 
-<!-- 🔥 RESEÑAS DE CLIENTES -->
-<section id="reseñas" style="background-color:#1e1e1e; color:#fff; padding:60px 20px; text-align:center;">
-  <h2 style="font-size:2em; margin-bottom:40px; color:#f04;">Lo que opinan nuestros clientes 🔥</h2>
+    <div class="acordeon-item">
+      <button class="acordeon-titulo">¿Cómo cancelo mi suscripción?</button>
+      <div class="acordeon-contenido">
+        <p>Solo necesitas escribirnos por WhatsApp al número de soporte y nuestro equipo gestionará tu cancelación de forma rápida y sencilla.</p>
+      </div>
+    </div>
 
-  <div class="reviews-carousel">
-    <div class="reviews-track">
-      <!-- Las reseñas se generarán aquí -->
+    <div class="acordeon-item">
+      <button class="acordeon-titulo">¿Qué puedo ver en CLICK TV?</button>
+      <div class="acordeon-contenido">
+        <p>CLICK TV cuenta con miles de películas, series, canales deportivos, canales para adultos y contenido infantil. ¡Todo en un solo lugar!</p>
+      </div>
+    </div>
+
+    <div class="acordeon-item">
+      <button class="acordeon-titulo">¿Es bueno CLICK TV para los niños?</button>
+      <div class="acordeon-contenido">
+        <p>Sí. CLICK TV incluye una selección de canales y contenido especialmente diseñado para niños, con opciones seguras y educativas.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- BOTÓN FLOTANTE DE WHATSAPP -->
-<a href="https://wa.me/573194693823" target="_blank" class="whatsapp-float" title="Chatea con nosotros">
-  💬
-</a>
 
-<style>
-/* ====== CARRUSEL DE RESEÑAS ====== */
-.reviews-carousel {
-  overflow: hidden;
-  width: 100%;
-  position: relative;
-}
-.reviews-track {
-  display: flex;
-  gap: 20px;
-  animation: scrollReviews 10s linear infinite;
-}
-.review-card {
-  background: #2a2a2a;
-  border-radius: 16px;
-  padding: 20px;
-  min-width: 280px;
-  max-width: 300px;
-  flex-shrink: 0;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-  text-align: left;
-  transition: transform 0.3s;
-}
-.review-card:hover {
-  transform: translateY(-6px);
-}
-.review-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 12px;
-}
-.review-avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin-right: 12px;
-  object-fit: cover;
-}
-.review-name {
-  font-weight: bold;
-  color: #fff;
-}
-.review-stars {
-  color: gold;
-  font-size: 0.9em;
-}
-.review-text {
-  color: #ccc;
-  font-size: 0.95em;
-  line-height: 1.4;
-}
 
-@keyframes scrollReviews {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-/* ====== BOTÓN FLOTANTE DE WHATSAPP ====== */
-.whatsapp-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #25D366;
-  color: white;
-  font-size: 30px;
-  border-radius: 50%;
-  padding: 15px;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  z-index: 999;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-decoration: none;
-}
-.whatsapp-float:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.4);
-}
-</style>
-
+<!-- 🔥 RESEÑAS DE CLIENTES -->
+<section id="reseñas" class="fade-in" style="background-color:#1e1e1e; color:#fff; padding:60px 20px; text-align:center;">
+  <h2 style="font-size:2em; margin-bottom:40px; color:#f04;">Lo que opinan nuestros clientes 🔥</h2>
+  <div class="reviews-carousel">
+    <div class="reviews-track"></div>
+  </div>
+</section>
 <script>
-// ====== GENERADOR DE 30 RESEÑAS ======
+// ====== GENERADOR DE RESEÑAS ======
 const reseñas = [
   {nombre:"Carlos M.", texto:"Excelente servicio, la calidad del contenido es brutal 🔥", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Carlos"},
   {nombre:"Laura G.", texto:"Lo uso todos los días, muy fluido y sin cortes.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Laura"},
@@ -421,26 +245,24 @@ const reseñas = [
   {nombre:"Santiago T.", texto:"Los canales deportivos van de lujo ⚽🔥", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Santiago"},
   {nombre:"Tatiana S.", texto:"Buena calidad de imagen, soporte 10/10.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Tatiana"},
   {nombre:"Cristian E.", texto:"Totalmente recomendable, muy estable.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Cristian"},
-  {nombre:"Valeria R.", texto:"Me encantó, funciona incluso en mi Android Box viejo.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Valeria"},
+  {nombre:"Valeria R.", texto:"Funciona incluso en mi Android Box viejo.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Valeria"},
   {nombre:"Daniel M.", texto:"Lo uso en mi LG Smart TV sin problema.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Daniel"},
-  {nombre:"Juliana Z.", texto:"Excelente interfaz, se ve moderna y fluida.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Juliana"},
+  {nombre:"Juliana Z.", texto:"Excelente interfaz, moderna y fluida.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Juliana"},
   {nombre:"Samuel N.", texto:"Puedo ver todo el contenido sin cortes, brutal.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Samuel"},
   {nombre:"Diana C.", texto:"Muy buena atención, siempre responden rápido.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Diana"},
-  {nombre:"Héctor B.", texto:"Lo mejor para ver canales internacionales 🌎", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Hector"},
   {nombre:"Andrea P.", texto:"Los canales premium se ven full HD 😍", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Andrea"},
   {nombre:"Esteban G.", texto:"Increíble estabilidad, muy recomendado.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Esteban"},
-  {nombre:"Katherine L.", texto:"La app es intuitiva y sencilla de usar.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Katherine"},
   {nombre:"Oscar R.", texto:"He probado varios servicios, y este es el mejor.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Oscar"},
   {nombre:"Carolina M.", texto:"Buena experiencia, se nota el compromiso del equipo.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Carolina"},
-  {nombre:"Fernando T.", texto:"No se traba, ni siquiera en horas pico 👏", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Fernando"},
   {nombre:"Isabela J.", texto:"Mi familia está feliz con este servicio 💕", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Isabela"},
   {nombre:"Jhonatan D.", texto:"Servicio muy completo, buena calidad y soporte.", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Jhonatan"},
   {nombre:"Lizeth P.", texto:"Llevo meses con ellos, cero quejas 💯", avatar:"https://api.dicebear.com/9.x/adventurer/svg?seed=Lizeth"}
 ];
 
-// Insertar reseñas duplicadas para bucle infinito visual
+// Duplicamos para loop infinito visual
 const track = document.querySelector('.reviews-track');
 const reseñasExtendidas = [...reseñas, ...reseñas];
+
 reseñasExtendidas.forEach(r => {
   const card = document.createElement('div');
   card.classList.add('review-card');
@@ -456,6 +278,78 @@ reseñasExtendidas.forEach(r => {
   `;
   track.appendChild(card);
 });
+
+// Ajustar velocidad del scroll automático
+let scrollSpeed = 1.2; // aumenta este valor para más velocidad
+function autoScroll() {
+  track.scrollLeft += scrollSpeed;
+  if (track.scrollLeft >= track.scrollWidth / 2) {
+    track.scrollLeft = 0;
+  }
+  requestAnimationFrame(autoScroll);
+}
+autoScroll();
 </script>
 
+
+<script>
+document.addEventListener("DOMContentLoaded", ()=>{
+
+  // Fade-in y acordeón (tu lógica original)
+  const fadeElems = document.querySelectorAll('.fade-in');
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  });
+  fadeElems.forEach(el=>obs.observe(el));
+
+  document.querySelectorAll(".acordeon-titulo").forEach(btn=>{
+    btn.addEventListener("click", ()=> btn.parentElement.classList.toggle("active"));
+  });
+
+  // Botones scroll Tendencias
+  const container = document.querySelector(".tendencias-container");
+  const btnLeft = document.querySelector(".scroll-btn.left");
+  const btnRight = document.querySelector(".scroll-btn.right");
+
+  btnLeft && btnLeft.addEventListener("click", ()=> container.scrollBy({left: -320, behavior: 'smooth'}));
+  btnRight && btnRight.addEventListener("click", ()=> container.scrollBy({left: 320, behavior: 'smooth'}));
+
+  // Habilitar arrastrar con mouse/touch en la fila (opcional, UX tipo Netflix)
+  let isDown = false, startX, scrollLeft;
+  if (container) {
+    container.addEventListener('mousedown', (e) => {
+      isDown = true;
+      container.classList.add('active-drag');
+      startX = e.pageX - container.offsetLeft;
+      scrollLeft = container.scrollLeft;
+    });
+    container.addEventListener('mouseleave', () => { isDown = false; container.classList.remove('active-drag'); });
+    container.addEventListener('mouseup', () => { isDown = false; container.classList.remove('active-drag'); });
+    container.addEventListener('mousemove', (e) => {
+      if(!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - container.offsetLeft;
+      const walk = (x - startX) * 1.2;
+      container.scrollLeft = scrollLeft - walk;
+    });
+
+    // touch
+    let startTouchX = 0, startTouchScroll = 0;
+    container.addEventListener('touchstart', (e)=> { startTouchX = e.touches[0].pageX; startTouchScroll = container.scrollLeft; });
+    container.addEventListener('touchmove', (e)=> {
+      const x = e.touches[0].pageX;
+      const walk = (x - startTouchX) * 1.2;
+      container.scrollLeft = startTouchScroll - walk;
+    });
+  }
+
+});
+</script>
+
+</body>
 </html>

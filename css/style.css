@@ -448,3 +448,111 @@ h1{font-size:28px;color:#fff;margin-bottom:10px}
 }
 
 
+/* ===== NUEVA GUÍA DE INSTALACIÓN VISUAL ===== */
+.guia-instalacion {
+  background: #050505;
+  padding: 70px 20px;
+  color: #ddd;
+  text-align: center;
+}
+
+.guia-titulo {
+  font-size: 1.9em;
+  color: #e50914;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.guia-sub {
+  color: #aaa;
+  font-size: 1em;
+  margin-bottom: 40px;
+}
+
+.guia-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.guia-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  padding: 28px 22px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.guia-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(229,9,20,0.25);
+}
+
+.guia-icon {
+  font-size: 42px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.guia-card h3 {
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-bottom: 16px;
+  border-left: 4px solid #e50914;
+  padding-left: 10px;
+}
+
+.pasos {
+  margin-left: 18px;
+  line-height: 1.7;
+  color: #ccc;
+}
+
+.pasos li {
+  margin-bottom: 10px;
+}
+
+.sublista {
+  list-style: none;
+  margin-top: 6px;
+  margin-left: 14px;
+}
+
+.sublista li {
+  color: #bbb;
+  font-size: 0.95em;
+  margin-bottom: 4px;
+}
+
+.link-ios {
+  color: #e50914;
+  text-decoration: none;
+  font-weight: 600;
+}
+.link-ios:hover {
+  text-decoration: underline;
+}
+
+.guia-nota {
+  font-size: 0.9em;
+  color: #888;
+  margin-top: 35px;
+}
+
+@media (max-width: 768px) {
+  .guia-card {
+    padding: 20px 16px;
+  }
+  .guia-card h3 {
+    font-size: 1.05em;
+  }
+  .guia-grid {
+    gap: 18px;
+  }
+}

@@ -7,9 +7,75 @@ body{font-family:Inter,Arial,Helvetica,sans-serif;background:#000;color:#fff;lin
 .fade-in{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
 .fade-in.visible{opacity:1;transform:translateY(0)}
 
-/* topbar */
-.topbar{display:flex;justify-content:center;align-items:center;padding:20px 0}
-.logo{height:300px}
+/* ===== LOGO ADAPTATIVO - FINAL ===== */
+
+/* contenedor general */
+.topbar {
+  position: relative;
+  width: 100%;
+  padding: 10px 0;
+  z-index: 60;
+}
+
+/* ----- LOGO DESKTOP ----- */
+.topbar-desktop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-large {
+  max-height: 300px;
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+/* ----- LOGO MÓVIL ----- */
+.topbar-mobile {
+  display: none;
+  position: fixed;
+  top: 10px;
+  left: 12px;
+  z-index: 999;
+}
+
+.logo-mobile {
+  height: 42px;
+  width: auto;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+}
+
+/* ----- DESACTIVAR CLIC EN LOGOS ----- */
+.brand-desktop,
+.brand-mobile {
+  pointer-events: none;
+  cursor: default;
+}
+
+/* ----- RESPONSIVE ----- */
+@media (max-width: 860px) {
+  .topbar-desktop {
+    display: none !important; /* oculta logo grande */
+  }
+
+  .topbar-mobile {
+    display: block !important; /* muestra logo móvil */
+  }
+}
+
+@media (min-width: 861px) {
+  .topbar-desktop {
+    display: flex !important; /* muestra logo grande */
+  }
+
+  .topbar-mobile {
+    display: none !important; /* oculta logo móvil */
+  }
+}
+
+
+
+
 
 /* hero */
 .hero{min-height:64vh;padding:28px 16px;display:flex;align-items:center;background:linear-gradient(180deg,#000 0%,#080808 70%)}
@@ -96,6 +162,19 @@ h1{font-size:28px;color:#fff;margin-bottom:10px}
 .logo-sm{height:40px}
 .footer-contact a{color:#fff;text-decoration:none}
 .legal{text-align:center;color:#777;margin-top:12px;font-size:12px}
+
+/* footer */
+.policy-footer {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #888;
+  text-align: center;
+  line-height: 1.6;
+}
+.policy-footer strong {
+  color: #fff;
+}
+
 
 /* responsive base */
 @media(max-width:860px){
@@ -192,6 +271,180 @@ h1{font-size:28px;color:#fff;margin-bottom:10px}
 }
 .tendencia:hover img {
   filter: brightness(1) contrast(1.2);
+}
+
+
+/* ===== Flechas de desplazamiento tipo Netflix ===== */
+.scroll-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(229, 9, 20, 0.8);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+  transition: opacity 0.3s ease, background 0.3s ease;
+  box-shadow: 0 0 12px rgba(0,0,0,0.6);
+}
+
+.scroll-arrow:hover {
+  background: rgba(229, 9, 20, 1);
+}
+
+.scroll-left {
+  left: 10px;
+}
+
+.scroll-right {
+  right: 10px;
+}
+
+.scroll-arrow.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* animación sutil de “parpadeo” para atraer atención */
+.scroll-arrow span {
+  animation: hintMove 1.2s infinite ease-in-out;
+}
+
+@keyframes hintMove {
+  0%, 100% { transform: translateX(0); opacity: 0.6; }
+  50% { transform: translateX(4px); opacity: 1; }
+}
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+  .scroll-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+}
+
+
+/* ===== SECCIÓN GUÍAS DE INSTALACIÓN ===== */
+.guia-instalacion {
+  background: #050505;
+  padding: 60px 20px;
+  color: #ddd;
+}
+
+.guia-titulo {
+  text-align: center;
+  font-size: 1.8em;
+  font-weight: 800;
+  color: #e50914;
+  margin-bottom: 40px;
+}
+
+.guia-card {
+  max-width: 900px;
+  margin: 0 auto 40px auto;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.guia-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(229,9,20,0.15);
+}
+
+.guia-card h3 {
+  color: #fff;
+  margin-bottom: 20px;
+  font-size: 1.3em;
+  border-left: 4px solid #e50914;
+  padding-left: 10px;
+}
+
+.pasos {
+  margin-left: 18px;
+  line-height: 1.7;
+}
+
+.pasos li {
+  margin-bottom: 12px;
+}
+
+.sublista {
+  list-style: none;
+  margin-top: 8px;
+  margin-left: 10px;
+}
+
+.sublista li {
+  margin-bottom: 6px;
+  color: #bbb;
+}
+
+.link-ios {
+  color: #e50914;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.link-ios:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .guia-card {
+    padding: 18px;
+  }
+  .guia-card h3 {
+    font-size: 1.1em;
+  }
+}
+
+/* === EFECTO CORONA / DESTACADO PREMIUM === */
+.plan.destacado {
+  position: relative;
+  overflow: visible;
+  background: linear-gradient(145deg, rgba(229,9,20,0.15), rgba(0,0,0,0.9));
+  border: 1px solid rgba(229,9,20,0.6);
+  box-shadow: 0 0 20px rgba(229,9,20,0.3), 0 0 40px rgba(229,9,20,0.2) inset;
+  animation: glowPulse 2.2s ease-in-out infinite alternate;
+}
+
+/* resplandor animado */
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 16px rgba(229,9,20,0.3), 0 0 40px rgba(229,9,20,0.2) inset;
+  }
+  100% {
+    box-shadow: 0 0 28px rgba(229,9,20,0.7), 0 0 60px rgba(229,9,20,0.4) inset;
+  }
+}
+
+/* corona superior */
+.plan.destacado::before {
+  content: "👑";
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-8deg);
+  font-size: 28px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
+  animation: floatCrown 2.8s ease-in-out infinite;
+}
+
+@keyframes floatCrown {
+  0%, 100% { transform: translate(-50%, 0) rotate(-8deg); }
+  50% { transform: translate(-50%, -6px) rotate(8deg); }
 }
 
 

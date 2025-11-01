@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="CLICK TV: contenido premium de películas, deportes y entretenimiento en todos tus dispositivos. Compatible con Smart TV, iOS y Android.">
+<meta name="keywords" content="IPTV, streaming, televisión online, películas, deportes, series, Smart TV, Colombia">
+
   <title>CLICK TV - Entretenimiento sin límites</title>
   <!-- Asegúrate que style.css esté en la misma carpeta que este index.html -->
  <link rel="stylesheet" href="css/style.css">
@@ -21,14 +24,28 @@
 </head>
 <body>
 
+<!-- <header class="topbar fade-in">
+  <img src="assets/NEW_LOGO_BLANCO.png" alt="CLICK TV" class="logo">-->
+  
+<!-- ===== HEADER LOGOS ===== -->
 <header class="topbar fade-in">
-  <img src="assets/NEW_LOGO_BLANCO.png" alt="CLICK TV" class="logo">
+  <!-- Logo grande - solo PC -->
+  <div class="topbar-desktop">
+    <img src="assets/NEW_LOGO_BLANCO.png" alt="CLICK TV" class="logo-large">
+  </div>
+
+  <!-- Logo pequeño - solo móvil -->
+  <div class="topbar-mobile">
+    <img src="assets/logo-frase.png" alt="CLICK TV" class="logo-mobile">
+  </div>
 </header>
+
 
 <section class="hero fade-in">
   <div class="container">
     <div class="hero-left">
-      <h1>CLICK TV - Disfruta el mejor contenido sin límites</h1>
+	<h1>  </h1>
+      <h1>Disfruta el mejor contenido sin límites</h1>
       <p class="lead">Películas, series, deportes y canales en vivo de todas las plataformas, en un solo lugar.</p>
 
       <div class="demo-banner">✨ Prueba una <strong>demo gratuita de 3 horas</strong> y vive la experiencia CLICK TV. ✨</div>
@@ -42,7 +59,7 @@
       </div>
 
       <ul class="features">
-        <li>Calidad HD y 4K</li>
+        <li>Calidad SD, HD y FHD</li>
         <li>📺 Canales en vivo</li>
         <li>🎬 Películas y series</li>
         <li>🔞 Canales ADULTOS</li>
@@ -66,7 +83,8 @@
 <!-- 🔥 SECCIÓN TENDENCIAS (scroll horizontal tipo Netflix) -->
 <section class="tendencias fade-in">
   <h2 class="tendencias-titulo">Tendencias</h2>
-  <div class="tendencias-wrapper">
+   <div class="tendencias-grid">
+   <div class="tendencias-wrapper">
     <button class="scroll-btn left" aria-label="scroll left">❮</button>
 
     <div class="tendencias-container" tabindex="0" role="region" aria-label="Tendencias">
@@ -80,21 +98,94 @@
       <div class="tendencia"><span class="numero">7</span><img src="assets/tendencia7.jpg" alt="Tendencia 7"></div>
       <div class="tendencia"><span class="numero">8</span><img src="assets/tendencia8.jpg" alt="Tendencia 8"></div>
     </div>
-
-    <button class="scroll-btn right" aria-label="scroll right">❯</button>
+	<!-- Flecha indicadora de desplazamiento -->
+	 <div class="scroll-arrow scroll-left hidden">
+    <span>❮</span>
+   </div>
+   <div class="scroll-arrow scroll-right">
+    <span>❯</span>
   </div>
 </section>
 
-<!-- PLANES -->
+<!-- ===== PLANES CLICK TV ===== -->
 <section id="planes" class="planes fade-in">
-  <h2>🔥 Elige tu plan perfecto</h2>
+  <h2 class="planes-titulo">🔥 Elige tu plan perfecto</h2>
+  <p class="planes-descripcion">Contenido premium en calidad SD a Full HD. Escoge el plan que mejor se adapte a tus dispositivos y disfruta sin límites.</p>
+<li></li>
   <div class="plan-container">
-    <div class="plan"><h3>1 Dispositivo</h3><p class="price">$15.000</p><ul><li>📺 Canales en vivo</li><li>🎬 Películas y series</li><li>🔞 Canales ADULTOS</li><li>⚡ Soporte 24/7 por WhatsApp</li></ul></div>
-    <div class="plan"><h3>2 Dispositivos</h3><p class="price">$18.000</p><ul><li>📺 Canales en vivo</li><li>🎬 Películas y series</li><li>🔞 Canales ADULTOS</li><li>⚡ Soporte 24/7 por WhatsApp</li></ul></div>
-    <div class="plan"><h3>3 Dispositivos</h3><p class="price">$20.000</p><ul><li>📺 Canales en vivo</li><li>🎬 Películas y series</li><li>🔞 Canales ADULTOS</li><li>⚡ Soporte 24/7 por WhatsApp</li></ul></div>
-    <div class="plan"><h3>4 Dispositivos</h3><p class="price">$22.000</p><ul><li>📺 Canales en vivo</li><li>🎬 Películas y series</li><li>🔞 Canales ADULTOS</li><li>⚡ Soporte 24/7 por WhatsApp</li></ul></div>
-    <div class="plan"><h3>5 Dispositivos</h3><p class="price">$25.000</p><ul><li>📺 Canales en vivo</li><li>🎬 Películas y series</li><li>🔞 Canales ADULTOS</li><li>⚡ Soporte 24/7 por WhatsApp</li></ul></div>
+
+    <!-- PLAN 1 -->
+    <div class="plan">
+      <div class="etiqueta">🔸 Individual</div>
+      <h3>🎟️ 1 Dispositivo</h3>
+      <p class="price">$15.000 / mes</p>
+      <ul>
+        <li>📺 Canales en vivo (SD – Full HD)</li>
+        <li>🎬 Películas y series</li>
+        <li>🔞 Canales adultos</li>
+        <li>⚡ Soporte 24/7 por WhatsApp</li>
+      </ul>
+      <a href="https://wa.me/573194693823?text=Hola%20CLICK%20TV!%20Quiero%20activar%20el%20plan%20de%201%20dispositivo." target="_blank" class="btn-plan">Activar plan</a>
+    </div>
+
+    <!-- PLAN 2 -->
+    <div class="plan">
+      <div class="etiqueta">👥 Doble experiencia</div>
+      <h3>📱 2 Dispositivos</h3>
+      <p class="price">$18.000 / mes</p>
+      <ul>
+        <li>📺 Canales en vivo (SD – Full HD)</li>
+        <li>🎬 Películas y series ilimitadas</li>
+        <li>🔞 Canales adultos</li>
+        <li>⚡ Soporte 24/7 por WhatsApp</li>
+      </ul>
+      <a href="https://wa.me/573194693823?text=Hola%20CLICK%20TV!%20Quiero%20activar%20el%20plan%20de%202%20dispositivos." target="_blank" class="btn-plan">Activar plan</a>
+    </div>
+
+    <!-- PLAN 3 -->
+    <div class="plan destacado">
+      <div class="etiqueta">⭐ Más popular</div>
+      <h3>👨‍👩‍👧‍👦 3 Dispositivos</h3>
+      <p class="price">$20.000 / mes</p>
+      <ul>
+        <li>📺 Canales en vivo (SD – Full HD)</li>
+        <li>🎬 Películas y series sin límites</li>
+        <li>🔞 Canales adultos</li>
+        <li>🚀 Soporte prioritario</li>
+      </ul>
+      <a href="https://wa.me/573194693823?text=Hola%20CLICK%20TV!%20Quiero%20activar%20el%20plan%20de%203%20dispositivos." target="_blank" class="btn-plan destacado">Activar plan</a>
+    </div>
+
+    <!-- PLAN 4 -->
+    <div class="plan">
+      <div class="etiqueta">🏠 Hogar Plus</div>
+      <h3>💎 4 Dispositivos</h3>
+      <p class="price">$22.000 / mes</p>
+      <ul>
+        <li>📺 Canales en vivo y Premium (SD – Full HD)</li>
+        <li>🎬 Películas y series exclusivas</li>
+        <li>🔞 Canales adultos</li>
+        <li>💬 Soporte personalizado</li>
+      </ul>
+      <a href="https://wa.me/573194693823?text=Hola%20CLICK%20TV!%20Quiero%20activar%20el%20plan%20de%204%20dispositivos." target="_blank" class="btn-plan">Activar plan</a>
+    </div>
+
+    <!-- PLAN 5 -->
+    <div class="plan">
+      <div class="etiqueta">🔥 Full Experience</div>
+      <h3>🚀 5 Dispositivos</h3>
+      <p class="price">$25.000 / mes</p>
+      <ul>
+        <li>📺 Canales en vivo y Premium (SD – Full HD)</li>
+        <li>🎬 Películas y series ilimitadas</li>
+        <li>🔞 Canales adultos</li>
+        <li>💎 Soporte preferencial</li>
+      </ul>
+      <a href="https://wa.me/573194693823?text=Hola%20CLICK%20TV!%20Quiero%20activar%20el%20plan%20de%205%20dispositivos." target="_blank" class="btn-plan">Activar plan</a>
+    </div>
   </div>
+   <li></li>
+  <p class="planes-nota">⚠️ Los precios aplican solo para Colombia. Fuera del país las tarifas pueden variar según la región.</p>
 </section>
 
 <!-- INFO / ACORDEON / RESEÑAS / FOOTER / BOTÓN WHATSAPP - Mantén tu HTML original aquí -->
@@ -173,14 +264,99 @@
   </div>
 </section>
 
+<!-- ===== GUÍAS DE INSTALACIÓN CLICK TV ===== -->
+<section class="guia-instalacion fade-in">
+  <h2 class="guia-titulo">Descarga e Instalación de la App</h2>
+
+  <!-- Guía iOS -->
+  <div class="guia-card">
+    <h3>🍎 Instalación en iPhone o iPad (iOS)</h3>
+    <ol class="pasos">
+      <li>Entra a la App Store y busca <strong>“Smarters Player Lite”</strong><br>
+          O entra directamente desde este enlace:<br>
+          <a href="https://apps.apple.com/co/app/smarters-player-lite/id1628995509" target="_blank" class="link-ios">
+            https://apps.apple.com/co/app/smarters-player-lite/id1628995509
+          </a>
+      </li>
+      <li>Instala la app y ábrela.</li>
+      <li>Selecciona la opción 👉 <strong>“Login with Xtream Codes API”</strong></li>
+      <li>Ingresa los datos de <strong>CLICK TV</strong>:
+        <ul class="sublista">
+          <li>👤 Usuario</li>
+          <li>🔐 Contraseña</li>
+          <li>🌐 URL del servidor</li>
+        </ul>
+      </li>
+      <li>¡Disfruta del contenido 📺🎬!</li>
+    </ol>
+  </div>
+
+  <!-- Guía Smart TV / Android TV -->
+  <div class="guia-card">
+    <h3>📺 Instalación en Smart TV (Samsung, LG) o Android TV</h3>
+    <ol class="pasos">
+      <li>Enciende tu dispositivo y asegúrate de estar conectado a internet.</li>
+      <li>Abre la tienda de aplicaciones:
+        <ul class="sublista">
+          <li>📦 En Samsung: Smart Hub</li>
+          <li>📦 En LG: LG Content Store</li>
+          <li>📦 En Android: Google Play Store</li>
+        </ul>
+      </li>
+      <li>Busca <strong>Smart One IPTV</strong>.</li>
+      <li>Selecciona la app y presiona <strong>Instalar</strong>.</li>
+      <li>Una vez instalada, ábrela.</li>
+      <li>En la interfaz principal (ver imagen de referencia), toma una foto de la pantalla y envíala para continuar con la activación del servicio.</li>
+    </ol>
+  </div>
+
+  <!-- Guía Android TV Box / Fire TV -->
+  <div class="guia-card">
+    <h3>🔥 Instalación en Android (TV Box o Fire TV)</h3>
+    <ol class="pasos">
+      <li>Abre la app <strong>Downloader</strong>.<br>
+          Si no la tienes, descárgala desde la Play Store.</li>
+      <li>En la barra de URL escribe:<br>
+          <code>3757322</code> o 
+          <a href="http://aftv.news/3757322" target="_blank" class="link-ios">http://aftv.news/3757322</a><br>
+          y presiona <strong>“Go” o “Ir”</strong>.
+      </li>
+      <li>Espera a que se descargue el archivo y selecciona <strong>Instalar</strong>.</li>
+      <li>Si aparece un mensaje de “Fuente desconocida”, activa <strong>“Permitir desde esta fuente”</strong>.</li>
+      <li>Abre la app instalada (<strong>CLICK TV</strong>).</li>
+      <li>Acepta los permisos si los solicita y elige:<br>👉 <strong>“XTREAM CODE”</strong></li>
+      <li>Ingresa los datos proporcionados por CLICK TV:
+        <ul class="sublista">
+          <li>👤 Nombre de usuario</li>
+          <li>🔐 Contraseña</li>
+          <li>🌐 URL del servidor (si lo solicita)</li>
+          <li>📝 Puedes nombrar el perfil como “CLICK TV” o tu nombre preferido</li>
+        </ul>
+      </li>
+      <li>✅ Listo — ya puedes disfrutar de canales, películas y series.</li>
+    </ol>
+  </div>
+</section>
+
+
 <!-- FOOTER -->
 <footer class="site-footer fade-in">
   <div class="footer-inner">
     <img src="assets/NEW_LOGO_BLANCO.png" alt="CLICK TV" class="logo-sm">
-    <div class="footer-contact"><a href="https://wa.me/573194693823" target="_blank">💬 Soporte en WhatsApp</a></div>
+    <div class="footer-contact">
+      <a href="https://wa.me/573194693823" target="_blank">💬 Soporte en WhatsApp</a>
+    </div>
   </div>
+
+  <p class="policy-footer">
+    🌎 <strong>Política de tarifas:</strong>  
+    Los valores mostrados aplican únicamente para <strong>Colombia</strong>.  
+    En otros países, los precios pueden variar según el mercado local y la tasa de cambio vigente.
+  </p>
+
   <p class="legal">© 2025 CLICK TV. Todos los derechos reservados.</p>
 </footer>
+
 
 <!-- 🔥 PREGUNTAS FRECUENTES -->
 <section class="channels fade-in">
@@ -361,6 +537,72 @@ document.addEventListener("DOMContentLoaded", ()=>{
   }
 
 });
+</script>
+
+<script>
+(function(){
+  function updateBodyPadding() {
+    if (window.matchMedia && window.matchMedia('(max-width: 860px)').matches) {
+      document.body.classList.add('has-fixed-mobile-logo');
+    } else {
+      document.body.classList.remove('has-fixed-mobile-logo');
+    }
+  }
+  // inicial
+  updateBodyPadding();
+  // on resize
+  window.addEventListener('resize', updateBodyPadding);
+})();
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const grid = document.querySelector('.tendencias-grid');
+  const leftArrow = document.querySelector('.scroll-left');
+  const rightArrow = document.querySelector('.scroll-right');
+
+  if (grid && leftArrow && rightArrow) {
+    // desplazamiento con clic
+    leftArrow.addEventListener('click', () => {
+      grid.scrollBy({ left: -grid.clientWidth * 0.8, behavior: 'smooth' });
+    });
+
+    rightArrow.addEventListener('click', () => {
+      grid.scrollBy({ left: grid.clientWidth * 0.8, behavior: 'smooth' });
+    });
+
+    // visibilidad dinámica
+    grid.addEventListener('scroll', () => {
+      const atStart = grid.scrollLeft <= 10;
+      const atEnd = grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 10;
+      leftArrow.classList.toggle('hidden', atStart);
+      rightArrow.classList.toggle('hidden', atEnd);
+    });
+  }
+});
+</script>
+
+<script>
+const planesContainer = document.querySelector('.plan-container.scroll-x');
+const leftBtn = document.querySelector('.planes-arrow.left');
+const rightBtn = document.querySelector('.planes-arrow.right');
+
+function updateArrows() {
+  const scrollLeft = planesContainer.scrollLeft;
+  const maxScroll = planesContainer.scrollWidth - planesContainer.clientWidth;
+  leftBtn.style.opacity = scrollLeft > 0 ? '1' : '0.3';
+  rightBtn.style.opacity = scrollLeft < maxScroll - 5 ? '1' : '0.3';
+}
+rightBtn.addEventListener('click', ()=> {
+  planesContainer.scrollBy({ left: 260, behavior: 'smooth' });
+  setTimeout(updateArrows, 400);
+});
+leftBtn.addEventListener('click', ()=> {
+  planesContainer.scrollBy({ left: -260, behavior: 'smooth' });
+  setTimeout(updateArrows, 400);
+});
+planesContainer.addEventListener('scroll', updateArrows);
+updateArrows();
 </script>
 
 </body>

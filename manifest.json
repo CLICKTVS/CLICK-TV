@@ -1,0 +1,21 @@
+{
+  "name": "CLICK TV - Entretenimiento sin límites",
+  "short_name": "CLICK TV",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#e50914",
+  "description": "Disfruta del mejor contenido IPTV en tu TV, móvil o PC con CLICK TV.",
+  "icons": [
+    {
+      "src": "assets/favicon/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/favicon/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

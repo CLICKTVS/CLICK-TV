@@ -1607,4 +1607,162 @@ body {
 }
 
 
+.logo-smartone {
+  margin-top: 10px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
 
+.logo-smartone p {
+  color: #ccc;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.logo-smartone img {
+  width: 100px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.25);
+}
+
+.logo-smartone, .interfaz-smartone {
+  margin-top: 10px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo-smartone p,
+.interfaz-smartone p {
+  color: #ccc;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.logo-smartone img,
+.interfaz-smartone img {
+  width: 160px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo-smartone img:hover,
+.interfaz-smartone img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 18px rgba(229, 9, 20, 0.45);
+}
+
+.whatsapp-enlace {
+  margin-top: 12px;
+  text-align: center;
+}
+
+.whatsapp-enlace a {
+  display: inline-block;
+  background: linear-gradient(90deg, #25D366, #128C7E);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  box-shadow: 0 0 12px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite;
+}
+
+.whatsapp-enlace a:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 16px rgba(37, 211, 102, 0.5);
+}
+
+.whatsapp-enlace span::before {
+  content: "📎 ";
+  font-size: 1.1em;
+}
+
+/* ✨ Animación de pulso suave */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(37, 211, 102, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.6);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(37, 211, 102, 0.4);
+  }
+}
+
+/* ===== BOTÓN ACTIVAR PLAN CON ANIMACIÓN ===== */
+.btn-plan {
+  display: inline-block;
+  background: linear-gradient(90deg, #e50914, #b0060f);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 12px 26px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  margin-top: 14px;
+  box-shadow: 0 0 14px rgba(229, 9, 20, 0.3);
+  transition: all 0.3s ease;
+  animation: pulseRed 2.2s infinite;
+}
+
+.btn-plan:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 24px rgba(229, 9, 20, 0.6);
+  background: linear-gradient(90deg, #ff0f1d, #b0060f);
+}
+
+/* ✨ Animación de pulso rojo */
+@keyframes pulseRed {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 12px rgba(229, 9, 20, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 26px rgba(229, 9, 20, 0.7);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 12px rgba(229, 9, 20, 0.4);
+  }
+}
+
+/* Para el plan destacado: pulso más fuerte y continuo */
+.btn-plan.destacado {
+  animation: pulseRedStrong 1.8s infinite ease-in-out;
+  background: linear-gradient(90deg, #ff1c28, #b0060f);
+  box-shadow: 0 0 20px rgba(229, 9, 20, 0.6);
+}
+
+@keyframes pulseRedStrong {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(229, 9, 20, 0.6);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 0 34px rgba(229, 9, 20, 0.9);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(229, 9, 20, 0.6);
+  }
+}

@@ -1,0 +1,4 @@
+V6
+-logo smart one, 
+-lineAs en planes divisores, 
+-link en guia de instalacion

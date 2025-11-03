@@ -11,3 +11,7 @@ V7
 
 v7.1
 + FIX TEXTO
+
+V7.2
++ AJUSTE DE Android TV Box / Fire TV
++ Addcion de logo DOWNLOADER

@@ -2,3 +2,9 @@ V6
 -logo smart one, 
 -lineAs en planes divisores, 
 -link en guia de instalacion
+
+V7
++ MENSAJE EMERGENTE LICENCIA
++ MENSAJE EMERGENTE, SMART ONE IPTV 
++ VITRINA Y SE ELIMINA ACORDEON EN PARRILA DE CANALES
++ SCROLL EN VISTA PREVIA DE CANALES

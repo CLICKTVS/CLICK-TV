@@ -198,89 +198,202 @@
 <section class="info-section fade-in">
   <h3 class="info-title">ℹ️ Información importante</h3>
   <div class="info-cards">
+
+    <!-- 💡 LICENCIA -->
     <div class="info-card">
       <div class="info-icon">🔑</div>
-      <p><strong>Licencia:</strong> Es el permiso para usar la app en TVs Samsung, LG o Android (pago anual en la tienda oficial).</p>
+      <p>
+        <strong class="open-licencia" style="cursor:pointer; color:#e50914; text-decoration:underline;">
+          Licencia:
+        </strong> 
+        Es el permiso para usar la app en TVs Samsung, LG o Android 
+        (pago anual en la tienda oficial).
+      </p>
     </div>
+
+    <!-- 💬 SERVICIO -->
     <div class="info-card">
       <div class="info-icon">▶️</div>
-      <p><strong>Servicio:</strong> Es el contenido que ves dentro de la app (pago mensual).</p>
+      <p>
+        <strong class="open-planes" style="cursor:pointer; color:#e50914; text-decoration:underline;">
+          Servicio:
+        </strong> 
+        Es el contenido que ves dentro de la app (pago mensual).
+      </p>
     </div>
   </div>
+
   <p class="info-note">✅ Ten en cuenta que el pago aplica por cada dispositivo.</p>
 </section>
 
-<!-- PARRILLA DE CANALES -->
-<section class="channels fade-in">
-  <h2>📡 Vista Previa de Canales</h2>
-  <div class="acordeon">
-
-    <div class="acordeon-item">
-      <button class="acordeon-titulo">
-        <span class="acordeon-texto">⍟ CINE CANALES</span>
-        <span class="acordeon-icon">+</span>
-      </button>
-      <div class="acordeon-contenido">
-        <ul>
-          <li>CINE | TNT HD</li><li>CINE | HBO HD</li><li>CINE | FOX HD</li><li>CINE | SPACE HD</li>
-          <li>CINE | STUDIO UNIVERSAL</li><li>CINE | PARAMOUNT</li><li>CINE | SONY</li><li>CINE | FX</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="acordeon-item">
-      <button class="acordeon-titulo">
-        <span class="acordeon-texto">⍟ FULL DEPORTES</span>
-        <span class="acordeon-icon">+</span>
-      </button>
-      <div class="acordeon-contenido">
-        <ul>
-          <li>DEP | ESPN</li><li>DEP | FOX SPORTS</li><li>DEP | WIN SPORTS +</li><li>DEP | DIRECTV SPORTS</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="acordeon-item">
-      <button class="acordeon-titulo">
-        <span class="acordeon-texto">⍟ CULTURA CANALES</span>
-        <span class="acordeon-icon">+</span>
-      </button>
-      <div class="acordeon-contenido">
-        <ul>
-          <li>CUL | DISCOVERY</li><li>CUL | NATIONAL GEOGRAPHIC</li><li>CUL | HISTORY</li><li>CUL | TLC</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="acordeon-item">
-      <button class="acordeon-titulo">
-        <span class="acordeon-texto">⍟ INFANTIL CANALES</span>
-        <span class="acordeon-icon">+</span>
-      </button>
-      <div class="acordeon-contenido">
-        <ul>
-          <li>NIÑOS | CARTOON NETWORK</li><li>NIÑOS | DISNEY CHANNEL</li><li>NIÑOS | NICK JR</li><li>NIÑOS | BABY TV</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="acordeon-item">
-      <button class="acordeon-titulo">
-        <span class="acordeon-texto">🔞 ADULTOS</span>
-        <span class="acordeon-icon">+</span>
-      </button>
-      <div class="acordeon-contenido">
-        <ul>
-          <li>XXX | BRAZZERS HD</li>
-          <li>XXX | PENTHOUSE GOLD HD</li>
-          <li>XXX | PLAYBOY TV</li>
-          <li>XXX | MAMACITAZ</li>
-        </ul>
-      </div>
-    </div>
-
+<!-- 🔔 MODAL ELEGANTE DE LICENCIA -->
+<div id="licenciaModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index:9999;">
+  <div style="background:#111; padding:25px; border-radius:12px; max-width:400px; text-align:center; box-shadow:0 0 15px rgba(229,9,20,0.5); animation: popIn 0.3s ease;">
+    <h3 style="color:#e50914; margin-bottom:10px;">💡 Información sobre la Licencia</h3>
+    <p style="color:#eee; font-size:0.95rem; line-height:1.5;">
+      El uso de la aplicación requiere una <strong>licencia anual de $15.000</strong> por dispositivo.  
+      <br><br>
+      Este valor cubre los costos de mantenimiento, soporte técnico y estabilidad de los servidores, 
+      garantizando que puedas disfrutar de una experiencia fluida y sin interrupciones durante todo el año.  
+      <br><br>
+      Si deseas adquirir o renovar tu licencia, puedes hacerlo directamente desde nuestro canal oficial de atención.
+    </p>
+    <a href="https://wa.me/573194693823?text=Hola%20CLICK%20TV!%20Deseo%20solicitar%o%renovar%20mi%20licencia%20anual%20para%20Smart%20TV."
+       target="_blank"
+       style="display:inline-block;margin-top:12px;background:linear-gradient(90deg,#25D366,#128C7E);
+              color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:600;
+              box-shadow:0 0 10px rgba(37,211,102,0.4);transition:all .3s ease;">
+      💬 Solicitar por WhatsApp
+    </a>
+    <button onclick="document.getElementById('licenciaModal').style.display='none'"
+      style="margin-top:15px;background:#e50914;color:white;border:none;padding:10px 20px;border-radius:8px;cursor:pointer;font-weight:600;">
+      Entendido
+    </button>
   </div>
+</div>
+
+<script>
+  // Mostrar modal de licencia
+  document.querySelector('.open-licencia').addEventListener('click', () => {
+    document.getElementById('licenciaModal').style.display = 'flex';
+  });
+
+  // Desplazamiento suave hacia sección de planes
+  document.querySelector('.open-planes').addEventListener('click', (e) => {
+    e.preventDefault();
+    const section = document.querySelector('#planes');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+
+  // Animación de aparición
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes popIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  `;
+  document.head.appendChild(style);
+</script>
+
+
+<!-- ===== PARRILLA DE CANALES (SCROLL NETFLIX STYLE) ===== -->
+<section class="channels fade-in" id="canales">
+  <h2>📡 Vista Previa de Canales</h2>
+  <p class="subtitulo-canales">
+    Explora parte del contenido disponible en <strong>CLICK TV</strong> — canales en calidad <span style="color:#e50914;">SD a Full HD</span>.
+  </p>
+
+  <div class="canales-wrapper">
+    <!-- Flechas -->
+    <button class="scroll-arrow left" aria-label="Anterior">❮</button>
+    <div class="categorias-grid scroll-x">
+      <div class="categoria-card cine">
+        <h3>🎬 CINE</h3>
+        <p>Los canales más vistos para los amantes del séptimo arte:</p>
+        <ul class="lista-canales">
+          <li>HBO HD</li>
+          <li>FOX HD</li>
+          <li>PARAMOUNT</li>
+          <li>SPACE</li>
+          <li>TNT HD</li>
+        </ul>
+      </div>
+
+      <div class="categoria-card deportes">
+        <h3>⚽ DEPORTES</h3>
+        <p>Vive la emoción del deporte con tus canales favoritos:</p>
+        <ul class="lista-canales">
+          <li>ESPN</li>
+          <li>FOX SPORTS</li>
+          <li>WIN SPORTS +</li>
+          <li>DIRECTV SPORTS</li>
+          <li>TYC SPORTS</li>
+        </ul>
+      </div>
+
+      <div class="categoria-card infantil">
+        <h3>🧸 INFANTIL</h3>
+        <p>Diversión y aprendizaje para los más pequeños:</p>
+        <ul class="lista-canales">
+          <li>DISNEY CHANNEL</li>
+          <li>NICK JR</li>
+          <li>CARTOON NETWORK</li>
+          <li>BABY TV</li>
+        </ul>
+      </div>
+
+      <div class="categoria-card cultura">
+        <h3>🌍 CULTURA</h3>
+        <p>Documentales, ciencia y conocimiento sin límites:</p>
+        <ul class="lista-canales">
+          <li>DISCOVERY CHANNEL</li>
+          <li>NATIONAL GEOGRAPHIC</li>
+          <li>HISTORY CHANNEL</li>
+          <li>ANIMAL PLANET</li>
+        </ul>
+      </div>
+
+      <div class="categoria-card variedades">
+        <h3>💫 VARIEDADES Y ENTRETENIMIENTO</h3>
+        <p>Programas, realities y shows para todos los gustos:</p>
+        <ul class="lista-canales">
+          <li>TELEMUNDO</li>
+          <li>CARACOL INTERNACIONAL</li>
+          <li>E! ENTERTAINMENT</li>
+          <li>A&E</li>
+          <li>MTV</li>
+        </ul>
+      </div>
+
+      <div class="categoria-card adultos">
+        <h3>🔞 ADULTOS</h3>
+        <p>Contenido exclusivo para mayores de edad (bajo solicitud):</p>
+        <ul class="lista-canales">
+          <li>BRAZZERS HD</li>
+          <li>PENTHOUSE GOLD</li>
+          <li>PLAYBOY TV</li>
+        </ul>
+      </div>
+    </div>
+    <button class="scroll-arrow right" aria-label="Siguiente">❯</button>
+  </div>
+
+  <!-- CTA FINAL -->
+  <p class="cta-canales">
+    💎 ¿Listo para acceder al catálogo completo de canales?<br>
+    <a href="#planes" class="btn-plan destacado">Ver planes disponibles</a>
+  </p>
 </section>
+
+
+
+<!-- ===== JS – CARRUSEL ===== -->
+<script>
+  const track = document.querySelector('.carrusel-track');
+  const btnLeft = document.querySelector('.arrow.left');
+  const btnRight = document.querySelector('.arrow.right');
+
+  btnRight.addEventListener('click', () => track.scrollBy({ left: 320, behavior: 'smooth' }));
+  btnLeft.addEventListener('click', () => track.scrollBy({ left: -320, behavior: 'smooth' }));
+</script>
+
+
+<!-- ===== JS – CARRUSEL ===== -->
+<script>
+  const track = document.querySelector('.carrusel-track');
+  const btnLeft = document.querySelector('.arrow.left');
+  const btnRight = document.querySelector('.arrow.right');
+  btnRight.addEventListener('click', () => track.scrollBy({ left: 300, behavior: 'smooth' }));
+  btnLeft.addEventListener('click', () => track.scrollBy({ left: -300, behavior: 'smooth' }));
+</script>
+
+
+
+
 
 
 <!-- ===== GUÍA DE INSTALACIÓN (NUEVA VERSIÓN VISUAL) ===== -->
@@ -329,7 +442,13 @@
         <li>Android → Google Play Store</li>
       </ul>
     </li>
-    <li>Busca <strong>Smart One IPTV</strong> e instálala.</li>
+    <li>
+      Busca 
+      <strong class="app-info" style="cursor:pointer; color:#e50914;">
+        Smart One IPTV
+      </strong> 
+      e instálala.
+    </li>
 
     <!-- Imagen del logo -->
     <li style="list-style:none; margin-top:10px; text-align:center;">
@@ -341,7 +460,7 @@
 
     <!-- Imagen de la interfaz -->
     <li style="list-style:none; text-align:center;">
-      <img src="assets/interfaz.png" alt="Interfaz Smart One IPTV" style="max-width:250px; margin-top:8px; border-radius:8px; box-shadow:0 0 10px rgba(229,9,20,0.3);">
+      <img src="assets/interfaz.png" alt="Interfaz SmartOne IPTV" style="max-width:250px; margin-top:8px; border-radius:8px; box-shadow:0 0 10px rgba(229,9,20,0.3);">
     </li>
 
     <li>Envíala por WhatsApp para activar tu servicio 📲</li>
@@ -359,7 +478,31 @@
   </p>
 </div>
 
+<!-- 🔔 MODAL EMERGENTE -->
+<div id="appModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:9999;">
+  <div style="background:#111; padding:25px; border-radius:12px; max-width:400px; text-align:center; box-shadow:0 0 15px rgba(229,9,20,0.4);">
+    <h3 style="color:#e50914; margin-bottom:10px;">💡 Información importante</h3>
+    <p style="color:#eee; font-size:0.95rem; line-height:1.5;">
+      El uso de <strong>Smart One IPTV</strong> requiere un pago anual de <strong>$15.000</strong> por cada dispositivo registrado.  
+      <br><br>
+      Este pago cubre los costos de licenciamiento y mantenimiento del sistema que permite almacenar tus listas y sincronizar el contenido.  
+      <br><br>
+      De esta forma garantizamos que tu servicio funcione de manera estable y sin interrupciones durante todo el año.
+    </p>
+    <button onclick="document.getElementById('appModal').style.display='none'"
+      style="margin-top:15px;background:#e50914;color:white;border:none;padding:10px 20px;border-radius:8px;cursor:pointer;font-weight:600;">
+      Entendido
+    </button>
+  </div>
+</div>
 
+<script>
+  // Mostrar modal al hacer clic en "Smart One IPTV"
+  document.querySelector('.app-info').addEventListener('click', () => {
+    document.getElementById('appModal').style.display = 'flex';
+  });
+</script>
 
 
 <!-- ANDROID / TV BOX -->
@@ -369,7 +512,7 @@
   <ol class="pasos">
     <li>Abre la app <strong>Downloader</strong> (si no la tienes, descárgala desde Play Store).</li>
     <li>En la barra de URL escribe:
-      <br><strong>3757322</strong> o <em>http://aftv.news/3757322</em></li>
+      <br><strong>3757322</strong> o <em></strong>http://aftv.news/3757322</strong></em></li>
     <li>Presiona “Go” y espera la descarga.</li>
     <li>Selecciona “Instalar” y permite fuentes desconocidas si lo solicita.</li>
     <li>Abre la app <strong>CLICK TV</strong> e inicia con:
@@ -612,6 +755,36 @@ leftBtn.addEventListener('click', ()=> {
 });
 planesContainer.addEventListener('scroll', updateArrows);
 updateArrows();
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const grid = document.querySelector('.categorias-grid.scroll-x');
+  const leftArrow = document.querySelector('.scroll-arrow.left');
+  const rightArrow = document.querySelector('.scroll-arrow.right');
+
+  if (!grid) return;
+
+  function updateArrows() {
+    const atStart = grid.scrollLeft <= 10;
+    const atEnd = grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 10;
+    leftArrow.style.opacity = atStart ? '0.3' : '1';
+    rightArrow.style.opacity = atEnd ? '0.3' : '1';
+  }
+
+  rightArrow.addEventListener('click', () => {
+    grid.scrollBy({ left: grid.clientWidth * 0.8, behavior: 'smooth' });
+    setTimeout(updateArrows, 400);
+  });
+
+  leftArrow.addEventListener('click', () => {
+    grid.scrollBy({ left: -grid.clientWidth * 0.8, behavior: 'smooth' });
+    setTimeout(updateArrows, 400);
+  });
+
+  grid.addEventListener('scroll', updateArrows);
+  updateArrows();
+});
 </script>
 
 </body>

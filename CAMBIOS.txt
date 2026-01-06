@@ -14,4 +14,18 @@ v7.1
 
 V7.2
 + AJUSTE DE Android TV Box / Fire TV
+<<<<<<< HEAD
 + Addcion de logo DOWNLOADER
+=======
++ Addcion de logo DOWNLOADER
+
+V7.4
++ Texto de boton de whatsapp
+
+
+v7.5
++ NOTA EMERGENTE DE SMART ONE 
++ AGREGAR DESLIZA DE DERECHA A IZQUIERDA
++ VIDEO ACTUALIZADO
+
+>>>>>>> 2b5116f (v7.5)

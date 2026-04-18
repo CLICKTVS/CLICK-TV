@@ -82,6 +82,63 @@
  </div>
 </section>
 
+<!-- ===== PARRILLA DE CANALES (SCROLL NETFLIX STYLE) ===== -->
+<div class="categorias-grid scroll-x">
+
+  <div class="categoria-card cine">
+    <h3>🎬 CINE</h3>
+    <p>Películas y estrenos</p>
+    <div class="chips">
+      <span>HBO</span>
+      <span>FOX</span>
+      <span>TNT</span>
+      <span>SPACE</span>
+    </div>
+  </div>
+
+  <div class="categoria-card deportes">
+    <h3>⚽ DEPORTES</h3>
+    <p>Eventos en vivo</p>
+    <div class="chips">
+      <span>ESPN</span>
+      <span>WIN+</span>
+      <span>DIRECTV</span>
+      <span>TYC</span>
+    </div>
+  </div>
+
+  <div class="categoria-card infantil">
+    <h3>🧸 INFANTIL</h3>
+    <p>Contenido para niños</p>
+    <div class="chips">
+      <span>Disney</span>
+      <span>Nick Jr</span>
+      <span>Cartoon</span>
+    </div>
+  </div>
+
+  <div class="categoria-card cultura">
+    <h3>🌍 CULTURA</h3>
+    <p>Documentales y ciencia</p>
+    <div class="chips">
+      <span>Discovery</span>
+      <span>NatGeo</span>
+      <span>History</span>
+    </div>
+  </div>
+
+  <div class="categoria-card adultos">
+    <h3>🔞 ADULTOS</h3>
+    <p>Contenido exclusivo</p>
+    <div class="chips">
+      <span>Brazzers</span>
+      <span>Penthouse</span>
+      <span>Playboy</span>
+    </div>
+  </div>
+
+</div>
+
 <div class="licencia-aviso">
   <span>⚠️ Importante:</span>
   El uso de la app <strong>Smart One IPTV</strong> o <strong>Duplex Play</strong>
@@ -170,12 +227,15 @@
 
 
 
-
 <!-- ===== PLANES CLICK TV ===== -->
 <section id="planes" class="planes fade-in">
   <h2 class="planes-titulo">🔥 Elige tu plan perfecto</h2>
   <p class="planes-descripcion">Contenido premium en calidad SD a Full HD. Escoge el plan que mejor se adapte a tus dispositivos y disfruta sin límites.</p>
 <H2></H2>
+<div style="text-align:center; margin-bottom:20px;">
+  <button class="btn-toggle active" onclick="cambiarPrecios('colombia')">🇨🇴 Colombia</button>
+  <button class="btn-toggle" onclick="cambiarPrecios('global')">🌎 Global USD</button>
+</div>
 
   <div class="plan-container">
 
@@ -183,7 +243,7 @@
     <div class="plan">
       <div class="etiqueta">🔸 Individual</div>
       <h3>🎟️ 1 Dispositivo</h3>
-      <p class="price">$15.000 / mes</p>
+      <p class="price" id="plan1">$15.000 / mes</p>
       <ul>
         <li>📺 Canales en vivo (SD – Full HD)</li>
         <li>🎬 Películas y series</li>
@@ -197,7 +257,7 @@
     <div class="plan">
       <div class="etiqueta">👥 Doble experiencia</div>
       <h3>📱 2 Dispositivos</h3>
-      <p class="price">$18.000 / mes</p>
+     <p class="price" id="plan2">$18.000 / mes</p>
       <ul>
         <li>📺 Canales en vivo (SD – Full HD)</li>
         <li>🎬 Películas y series ilimitadas</li>
@@ -211,7 +271,7 @@
     <div class="plan destacado">
 	  <div class="etiqueta">⭐ Más popular</div>
       <h3>👨‍👩‍👧‍👦 3 Dispositivos</h3>
-      <p class="price">$20.000 / mes</p>
+     <p class="price" id="plan3">$20.000 / mes</p>
       <ul>
         <li>📺 Canales en vivo (SD – Full HD)</li>
         <li>🎬 Películas y series sin límites</li>
@@ -225,7 +285,7 @@
     <div class="plan">
       <div class="etiqueta">🏠 Hogar Plus</div>
       <h3>💎 4 Dispositivos</h3>
-      <p class="price">$22.000 / mes</p>
+      <p class="price" id="plan4">$22.000 / mes</p>
       <ul>
         <li>📺 Canales en vivo y Premium (SD – Full HD)</li>
         <li>🎬 Películas y series exclusivas</li>
@@ -239,7 +299,7 @@
     <div class="plan">
       <div class="etiqueta">🔥 Full Experience</div>
       <h3>🚀 5 Dispositivos</h3>
-      <p class="price">$25.000 / mes</p>
+     <p class="price" id="plan5">$25.000 / mes</p>
       <ul>
         <li>📺 Canales en vivo y Premium (SD – Full HD)</li>
         <li>🎬 Películas y series ilimitadas</li>
@@ -345,95 +405,6 @@
   document.head.appendChild(style);
 </script>
 
-
-<!-- ===== PARRILLA DE CANALES (SCROLL NETFLIX STYLE) ===== -->
-<section class="channels fade-in" id="canales">
-  <h2>📡 Vista Previa de Canales</h2>
-  <p class="subtitulo-canales">
-    Explora parte del contenido disponible en <strong>CLICK TV</strong> — canales en calidad <span style="color:#e50914;">SD a Full HD</span>.
-  </p>
-
-  <div class="canales-wrapper">
-    <!-- Flechas -->
-    <button class="scroll-arrow left" aria-label="Anterior">❮</button>
-    <div class="categorias-grid scroll-x">
-      <div class="categoria-card cine">
-        <h3>🎬 CINE</h3>
-        <p>Los canales más vistos para los amantes del séptimo arte:</p>
-        <ul class="lista-canales">
-          <li>HBO HD</li>
-          <li>FOX HD</li>
-          <li>PARAMOUNT</li>
-          <li>SPACE</li>
-          <li>TNT HD</li>
-        </ul>
-      </div>
-
-      <div class="categoria-card deportes">
-        <h3>⚽ DEPORTES</h3>
-        <p>Vive la emoción del deporte con tus canales favoritos:</p>
-        <ul class="lista-canales">
-          <li>ESPN</li>
-          <li>FOX SPORTS</li>
-          <li>WIN SPORTS +</li>
-          <li>DIRECTV SPORTS</li>
-          <li>TYC SPORTS</li>
-        </ul>
-      </div>
-
-      <div class="categoria-card infantil">
-        <h3>🧸 INFANTIL</h3>
-        <p>Diversión y aprendizaje para los más pequeños:</p>
-        <ul class="lista-canales">
-          <li>DISNEY CHANNEL</li>
-          <li>NICK JR</li>
-          <li>CARTOON NETWORK</li>
-          <li>BABY TV</li>
-        </ul>
-      </div>
-
-      <div class="categoria-card cultura">
-        <h3>🌍 CULTURA</h3>
-        <p>Documentales, ciencia y conocimiento sin límites:</p>
-        <ul class="lista-canales">
-          <li>DISCOVERY CHANNEL</li>
-          <li>NATIONAL GEOGRAPHIC</li>
-          <li>HISTORY CHANNEL</li>
-          <li>ANIMAL PLANET</li>
-        </ul>
-      </div>
-
-      <div class="categoria-card variedades">
-        <h3>💫 VARIEDADES Y ENTRETENIMIENTO</h3>
-        <p>Programas, realities y shows para todos los gustos:</p>
-        <ul class="lista-canales">
-          <li>TELEMUNDO</li>
-          <li>CARACOL INTERNACIONAL</li>
-          <li>E! ENTERTAINMENT</li>
-          <li>A&E</li>
-          <li>MTV</li>
-        </ul>
-      </div>
-
-      <div class="categoria-card adultos">
-        <h3>🔞 ADULTOS</h3>
-        <p>Contenido exclusivo para mayores de edad (bajo solicitud):</p>
-        <ul class="lista-canales">
-          <li>BRAZZERS HD</li>
-          <li>PENTHOUSE GOLD</li>
-          <li>PLAYBOY TV</li>
-        </ul>
-      </div>
-    </div>
-    <button class="scroll-arrow right" aria-label="Siguiente">❯</button>
-  </div>
-
-  <!-- CTA FINAL -->
-  <p class="cta-canales">
-    💎 ¿Listo para acceder al catálogo completo de canales?<br>
-    <a href="#planes" class="btn-plan destacado">Ver planes disponibles</a>
-  </p>
-</section>
 
 
 
@@ -589,7 +560,7 @@
     </li>
 	
     <li>En la barra de URL escribe:
-      <br><strong>3757322</strong> o <strong>5426549</strong></li>
+      <br><strong>3757322</strong> o <em><strong>5426549</strong></em></li>
     <li>Presiona “Go” y espera la descarga.</li>
     <li>Selecciona “Instalar” y permite fuentes desconocidas si lo solicita.</li>
     <li>Abre la app, selecciona TV</li>
@@ -661,7 +632,45 @@
     </a>
   </p>
 </div>
+
+<!-- ROKU -->
+<div class="guia-card">
+  <div class="guia-icon">📦</div>
+  <h3>Instalar en Roku</h3>
+
+  <ol class="pasos">
+    <li>Enciende tu Roku y entra al menú principal</li>
+
+    <li>Ve a <strong>Streaming Channels</strong> (Canales de streaming)</li>
+
+    <li>Ingresa a <strong>Buscar canales</strong> 🔍</li>
+
+    <li>Escribe: <strong>UVA TV</strong></li>
+
+    <!-- LOGO COMO LOS OTROS -->
+    <li class="guia-media">
+      <p class="guia-texto">El logo de la app es el siguiente:</p>
+      <img src="assets/uva-tv.png" alt="UVA TV logo" class="guia-img">
+    </li>
+
+    <li>Selecciona la app cuando aparezca</li>
+
+    <li>Presiona <strong>Agregar canal</strong> ➕</li>
+
+    <li>Espera a que se instale y luego selecciona <strong>Ir al canal</strong></li>
+
+    <li>Abre la app y te mostrará un usuario / contraseña</li>
+  </ol>
+
+  <p class="guia-cta">
+    ¿Necesitas tus credenciales para Roku?  
+    <a href="https://wa.me/573194693823?text=Hola%20CLICK%20TV!%20Deseo%20recibir%20mis%20credenciales%20para%20Roku." target="_blank">
+      💬 Solicitar acceso por WhatsApp
+    </a>
+  </p>
+</div>
  </div>
+
      <p class="guia-nota">⚠️ Las aplicaciones y métodos de instalación pueden variar según el modelo o versión del sistema operativo.</p>
 </section>
 
@@ -1011,9 +1020,25 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+<script>
+function cambiarPrecios(tipo) {
+  const precios = {
+    colombia: ["$15.000", "$18.000", "$20.000", "$22.000", "$25.000"],
+    global: ["$7.00", "$7.50", "$8.00", "$8.25", "$8.50"]
+  };
 
+  const moneda = tipo === "global" ? " USD / mes" : " / mes";
 
+  document.getElementById("plan1").innerText = precios[tipo][0] + moneda;
+  document.getElementById("plan2").innerText = precios[tipo][1] + moneda;
+  document.getElementById("plan3").innerText = precios[tipo][2] + moneda;
+  document.getElementById("plan4").innerText = precios[tipo][3] + moneda;
+  document.getElementById("plan5").innerText = precios[tipo][4] + moneda;
 
+  document.querySelectorAll(".btn-toggle").forEach(btn => btn.classList.remove("active"));
+  event.target.classList.add("active");
+}
+</script>
 
 
 </body>

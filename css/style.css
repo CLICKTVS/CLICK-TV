@@ -2521,3 +2521,129 @@ body {
     transform: scale(1);
   }
 }
+
+.btn-toggle {
+  background: #111;
+  color: #fff;
+  border: 1px solid #e50914;
+  padding: 8px 15px;
+  margin: 5px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-toggle:hover {
+  background: #e50914;
+}
+
+.btn-toggle.active {
+  background: #e50914;
+}
+
+.guia-media {
+  list-style: none;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.guia-texto {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.guia-img {
+  max-width: 120px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(229,9,20,0.3);
+}
+
+.guia-cta {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+.guia-cta a {
+  display: inline-block;
+  margin-top: 6px;
+  background: linear-gradient(90deg,#25D366,#128C7E);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(37,211,102,0.4);
+  transition: all .3s ease;
+}
+
+.guia-cta a:hover {
+  transform: scale(1.05);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.chips span {
+  background: rgba(255,255,255,0.08);
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  color: #ccc;
+  transition: 0.3s;
+}
+
+.chips span:hover {
+  background: #e50914;
+  color: #fff;
+}
+
+.categoria-card {
+  min-width: 220px;
+  padding: 18px;
+  border-radius: 14px;
+  background: linear-gradient(180deg,#111,#1a1a1a);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.categoria-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+
+.categoria-card h3 {
+  margin-bottom: 5px;
+}
+
+.categoria-card p {
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.categorias-grid {
+  display: flex;
+  gap: 16px;
+  padding: 10px 20px;
+
+  justify-content: center;   /* 🔥 centra las cards */
+  align-items: stretch;
+}
+
+/* 👇 IMPORTANTE para mantener scroll en móvil */
+.categorias-grid.scroll-x {
+  overflow-x: auto;
+  justify-content: flex-start; /* en móvil vuelve a izquierda */
+}
+
+/* 👇 cuando hay espacio suficiente (pantallas grandes) */
+@media (min-width: 900px) {
+  .categorias-grid.scroll-x {
+    justify-content: center;
+  }
+}
